@@ -383,9 +383,9 @@
             section { padding: 4rem 6%; }
             .services-grid { grid-template-columns: 1fr; max-width: 380px; }
             .trust { grid-template-columns: 1fr; }
-            .carousel { padding: 0 2.8rem; }
+            .carousel { padding: 0 2.4rem; }
             .rcard { width: 270px; }
-            .pslide { height: 250px; }
+            .pslide { height: 370px; }
         }
     </style>
 </head>
@@ -913,7 +913,15 @@
             const first = track.querySelector('*');
             const gap = parseFloat(getComputedStyle(track).columnGap) || 20;
             const step = first ? first.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
-            track.scrollBy({ left: dir * step, behavior: 'smooth' });
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            const tol = 5;
+            if (dir > 0 && track.scrollLeft >= maxScroll - tol) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else if (dir < 0 && track.scrollLeft <= tol) {
+                track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: dir * step, behavior: 'smooth' });
+            }
         }
 
         // Close mobile menu on link click

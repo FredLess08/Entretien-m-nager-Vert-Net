@@ -630,9 +630,9 @@
         }
 
         @media (max-width: 480px) {
-            .carousel { padding: 0 2.6rem; }
+            .carousel { padding: 0 2.4rem; }
             .review-card { width: 260px; min-height: 280px; }
-            .photo-slide { height: 240px; }
+            .photo-slide { height: 360px; }
             .carousel-btn { width: 40px; height: 40px; font-size: 1.1rem; }
         }
 
@@ -1657,7 +1657,15 @@
                         const first = track.querySelector('*');
                         const gap = parseFloat(getComputedStyle(track).columnGap) || 19;
                         const step = first ? first.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
-                        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+                        const maxScroll = track.scrollWidth - track.clientWidth;
+                        const tol = 5;
+                        if (dir > 0 && track.scrollLeft >= maxScroll - tol) {
+                            track.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else if (dir < 0 && track.scrollLeft <= tol) {
+                            track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+                        } else {
+                            track.scrollBy({ left: dir * step, behavior: 'smooth' });
+                        }
                     }
                 </script>
             </div>
