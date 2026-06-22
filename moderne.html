@@ -273,13 +273,15 @@
         .svc summary::after { content: '→'; transition: transform 0.2s; }
         .svc details[open] summary::after { transform: rotate(90deg); }
         .plan { margin-top: 1rem; font-size: 0.85rem; text-align: left; }
-        .plan h5 { font-family: 'Sora'; font-size: 0.9rem; color: var(--green-dark); margin: 0.9rem 0 0.4rem; }
+        .plan h5 { font-family: 'Sora', sans-serif; font-size: 0.9rem; color: var(--green-dark); margin: 1rem 0 0.4rem; }
         .plan h5:first-child { margin-top: 0; }
-        .plan ul { list-style: none; padding: 0; margin: 0 0 0.4rem; }
-        .plan li { padding: 0.2rem 0 0.2rem 1.1rem; position: relative; color: var(--ink); }
-        .plan li::before { content: '•'; position: absolute; left: 0; color: var(--green-bright); }
-        .plan li .d { display: block; color: var(--muted); font-size: 0.78rem; }
-        .plan .note { font-style: italic; color: var(--muted); font-size: 0.8rem; margin-top: 0.3rem; }
+        .plan h5.extras { color: var(--green-mid); }
+        .plan ul { list-style: none; padding: 0; margin: 0 0 0.5rem; }
+        .plan li { padding: 0.22rem 0 0.22rem 1.1rem; position: relative; color: var(--ink); font-weight: 600; }
+        .plan li::before { content: '•'; position: absolute; left: 0; color: var(--green-bright); font-weight: 700; }
+        .plan li strong { font-weight: 600; }
+        .plan li .desc { display: block; color: var(--muted); font-size: 0.78rem; font-weight: 400; }
+        .plan-note { font-style: italic; color: var(--muted); font-size: 0.8rem; margin-top: 0.4rem; }
 
         /* Why */
         .why { background: var(--bg-soft); }
@@ -478,25 +480,58 @@
                     <div class="plan">
                         <h5>🍽 Cuisine & salle à manger</h5>
                         <ul>
-                            <li>Armoires, tablettes & tiroirs<span class="d">Époussetage & façades</span></li>
-                            <li>Comptoirs & dosserets</li>
-                            <li>Robinetterie & évier<span class="d">Nettoyage & désinfection</span></li>
-                            <li>Toutes les surfaces<span class="d">Époussetage</span></li>
-                            <li>Électroménagers (extérieur), table, chaises, poubelle, recyclage</li>
-                            <li>Sols<span class="d">Aspirateur & lavage</span></li>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Chargement & démarrage (si vide)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Table</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
                         <h5>🛁 Salle de bain(s)</h5>
                         <ul>
-                            <li>Miroirs, céramique & surfaces chromées</li>
-                            <li>Armoires, comptoirs & étagères, douche, baignoire, toilette</li>
-                            <li>Sols<span class="d">Aspirateur & lavage</span></li>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Douche</strong></li>
+                            <li><strong>Baignoire</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilette</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <h5>🛋 Chambres & aires de séjour</h5>
+                        <h5>🛋 Chambre(s), salon(s) & aires de séjour</h5>
                         <ul>
-                            <li>Toutes les surfaces, miroirs, interrupteurs, portes</li>
-                            <li>Lits (les faire), poubelle, sols</li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes & poignées</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Rebords</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Lits</strong><span class="desc">Les faire</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <p class="note">Besoins spécifiques offerts en extra (literie, lessive, vitres, murs, etc.)</p>
+                        <h5 class="extras">➕ Besoins spécifiques <em style="font-weight:400; font-size:0.82rem;">(Extras $ + taxes)</em></h5>
+                        <ul>
+                            <li><strong>Literie</strong><span class="desc">Changement</span></li>
+                            <li><strong>Lessive</strong><span class="desc">Lavage, séchage & pliage (sur place)</span></li>
+                            <li><strong>Vaisselle</strong><span class="desc">Gestion</span></li>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoire(s) & placard(s)</strong><span class="desc">Intérieur (si vide(s))</span></li>
+                            <li><strong>Électroménager(s)</strong><span class="desc">Intérieur</span></li>
+                            <li><strong>Vitre(s) intérieure(s) & cadrage(s)</strong><span class="desc">Moustiquaire(s) inclus (si amovible(s) de l'intérieur)</span></li>
+                            <li><strong>Portes-patio, moustiquaire(s) & rails</strong><span class="desc">Intérieur & extérieur (sauf l'hiver)</span></li>
+                            <li><strong>Murs & plafonds</strong><span class="desc">Lavage complet (hauteur maximale de 10′)</span></li>
+                        </ul>
                     </div>
                 </details>
             </div>
@@ -509,21 +544,58 @@
                     <div class="plan">
                         <h5>🍽 Cuisine & salle à manger</h5>
                         <ul>
-                            <li>Armoires, tablettes & tiroirs<span class="d">Façades & intérieurs (si vides)</span></li>
-                            <li>Hotte de cuisine, appareils (intérieur & extérieur)</li>
-                            <li>Comptoirs, robinetterie, surfaces, sols</li>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Façades & intérieurs (si vides)</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Détartrage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Chargement & démarrage (si vide)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Intérieur & extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Table</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
                         <h5>🛁 Salle de bain(s)</h5>
                         <ul>
-                            <li>Armoires, étagères, tablettes, comptoirs & tiroirs<span class="d">Intérieur & extérieur (si vides)</span></li>
-                            <li>Douche, baignoire, toilette, sols</li>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Intérieur & extérieur (si vides)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Détartrage & désinfection</span></li>
+                            <li><strong>Douche</strong></li>
+                            <li><strong>Baignoire</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilette</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <h5>🛋 Chambres & aires de séjour</h5>
+                        <h5>🛋 Chambre(s), salon(s) & aires de séjour</h5>
                         <ul>
-                            <li>Surfaces hautes, moulures, fenêtres (vitres intérieures)</li>
-                            <li>Laveuse & sécheuse, literie, murs & plafonds</li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoires & placards</strong><span class="desc">Intérieurs (si vides)</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes, poignées & cadrages</strong></li>
+                            <li><strong>Moulures</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Vitres intérieures, cadrages & rebords. Moustiquaires inclus (si amovibles de l'intérieur)</span></li>
+                            <li><strong>Portes-patio, moustiquaire(s) & rails</strong><span class="desc">Intérieur & extérieur (sauf l'hiver)</span></li>
+                            <li><strong>Murs & plafonds</strong><span class="desc">Lavage complet (hauteur maximale de 10′)</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong></li>
+                            <li><strong>Laveuse & sécheuse</strong><span class="desc">Intérieur, extérieur & filtre de la sécheuse</span></li>
+                            <li><strong>Literie</strong><span class="desc">Changement</span></li>
+                            <li><strong>Lits</strong><span class="desc">Les faire</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <p class="note">Vaisselle et lessive offertes en extra.</p>
+                        <h5 class="extras">➕ Besoins spécifiques <em style="font-weight:400; font-size:0.82rem;">(Extras $ + taxes)</em></h5>
+                        <ul>
+                            <li><strong>Vaisselle</strong><span class="desc">Gestion</span></li>
+                            <li><strong>Lessive</strong><span class="desc">Lavage, séchage & pliage (sur place)</span></li>
+                        </ul>
                     </div>
                 </details>
             </div>
@@ -534,19 +606,61 @@
                 <details>
                     <summary>Voir le plan de travail</summary>
                     <div class="plan">
-                        <h5>🛋 Service complet entre les séjours</h5>
+                        <h5>🍽 Cuisine & salle à manger</h5>
                         <ul>
-                            <li>Inspection exhaustive de la propriété</li>
-                            <li>Cuisine & salle de bain complètes</li>
-                            <li>Literie & serviettes<span class="d">Gestion de la lessive et mise en place</span></li>
-                            <li>Laveuse & sécheuse, consommables<span class="d">⚠️ Produits non fournis</span></li>
-                            <li>🔥 BBQ<span class="d">Grilles, tiroir à graisses, propane</span></li>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Façades & intérieurs</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Démarrage, déchargement & rangement</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Intérieur & extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Table</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <h5>💧 Option SPA</h5>
+                        <h5>🛁 Salle de bain(s)</h5>
                         <ul>
-                            <li>Entretien de base<span class="d">Filtre, chlore, ligne d'eau, couvercle, appoint d'eau</span></li>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Façades & intérieur</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Douche</strong></li>
+                            <li><strong>Baignoire</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilette</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <p class="note">⚠️ Produits non fournis</p>
+                        <h5>🛋 Chambre(s), salon(s), aires de séjour & autres</h5>
+                        <ul>
+                            <li><strong>Inspection exhaustive</strong></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoires & placards</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes, poignées & cadrages</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Vitres intérieures, cadrages & rebords</span></li>
+                            <li><strong>Portes-patio, moustiquaire(s) & rails</strong><span class="desc">Intérieur & extérieur (sauf l'hiver)</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong></li>
+                            <li><strong>Literie & serviettes</strong><span class="desc">Gestion de la lessive et mise en place</span></li>
+                            <li><strong>Lits</strong><span class="desc">Les faire</span></li>
+                            <li><strong>Laveuse & sécheuse</strong><span class="desc">Intérieur, extérieur & filtre de la sécheuse</span></li>
+                            <li><strong>Consommables</strong><span class="desc">Gestion & remplissage (papier hygiénique, essuie-tout, savons, sacs de poubelle, etc.)<br><em>⚠️ Produits non fournis</em></span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                            <li><strong>🔥 BBQ</strong><span class="desc">Essuyage extérieur, brossage des grilles, vidange du tiroir à graisses, vérification & changement de la bonbonne de propane (si fournie)</span></li>
+                        </ul>
+                        <h5 class="extras">💧 Option SPA</h5>
+                        <ul>
+                            <li><strong>Entretien de base</strong><span class="desc">Filtre, ajout de chlore, ligne d'eau, appuie-têtes, couvercle (intérieur & extérieur) & appoint d'eau</span></li>
+                        </ul>
+                        <p class="plan-note">⚠️ Note : Produits non fournis</p>
                     </div>
                 </details>
             </div>
@@ -559,19 +673,55 @@
                     <div class="plan">
                         <h5>🍽 Cuisine & salle à manger</h5>
                         <ul>
-                            <li>Armoires, comptoirs, robinetterie, électroménagers</li>
-                            <li>Tables, chaises, poubelle, recyclage, sols</li>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Chargement & démarrage (si vide)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Tables</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
                         <h5>🛁 Salle de bain(s)</h5>
                         <ul>
-                            <li>Miroirs, surfaces, douches, toilettes, sols</li>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Douches</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilettes</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <h5>🛋 Bureaux, salle d'attente & conférence</h5>
+                        <h5>🛋 Bureaux, salle d'attente, salle de conférence & aire(s) commune(s)</h5>
                         <ul>
-                            <li>Tables, chaises, fauteuils, surfaces</li>
-                            <li>Interrupteurs, portes, fenêtres, plinthes, sols</li>
+                            <li><strong>Tables</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Fauteuils</strong></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes & poignées</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Rebords</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
                         </ul>
-                        <p class="note">Surfaces hautes, vitres et murs offerts en extra.</p>
+                        <h5 class="extras">➕ Besoins spécifiques <em style="font-weight:400; font-size:0.82rem;">(Extras $ + taxes)</em></h5>
+                        <ul>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoire(s) & placard(s)</strong><span class="desc">Intérieur (si vide(s))</span></li>
+                            <li><strong>Électroménager(s)</strong><span class="desc">Intérieur</span></li>
+                            <li><strong>Vitre(s) intérieure(s) & cadrage(s)</strong><span class="desc">Moustiquaire(s) inclus (si amovible(s) de l'intérieur)</span></li>
+                            <li><strong>Murs & plafonds</strong><span class="desc">Lavage complet (hauteur maximale de 10′)</span></li>
+                        </ul>
                     </div>
                 </details>
             </div>
