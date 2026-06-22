@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entretien ménager Vert & Net — Version moderne (aperçu)</title>
     <meta name="description" content="Entretien ménager écologique de grade clinique dans les Laurentides et Lanaudière. Résidentiel, locatif, Airbnb et commercial.">
+    <link rel="icon" type="image/jpeg" href="images/IMG_0283.jpeg">
+    <link rel="apple-touch-icon" href="images/IMG_0283.jpeg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Entretien ménager Vert & Net">
+    <meta property="og:description" content="Ménage écologique de grade clinique dans les Laurentides et Lanaudière. Sécuritaire pour les enfants et les animaux. Estimation gratuite!">
+    <meta property="og:image" content="https://entretienvertetnet.ca/images/IMG_0283.jpeg">
+    <meta property="og:url" content="https://entretienvertetnet.ca/moderne.html">
+    <meta property="og:locale" content="fr_CA">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -324,6 +333,28 @@
         .rtext { color: var(--muted); font-size: 0.93rem; line-height: 1.55; }
 
         .pslide { height: 320px; width: auto; border-radius: 20px; box-shadow: var(--shadow-sm); }
+
+        /* Bouton flottant Appeler (mobile) */
+        .floating-call {
+            position: fixed;
+            bottom: calc(18px + env(safe-area-inset-bottom));
+            right: 16px;
+            z-index: 300;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green-dark);
+            color: #fff;
+            padding: 0.85rem 1.3rem;
+            border-radius: 50px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(45, 106, 79, 0.5);
+        }
+        .floating-call svg { width: 20px; height: 20px; fill: currentColor; }
+        @media (max-width: 768px) { .floating-call { display: inline-flex; } }
 
         /* Regions */
         .regions { background: linear-gradient(135deg, var(--green-darkest), var(--green-mid)); color: #fff; text-align: center; }
@@ -745,6 +776,28 @@
         </div>
     </section>
 
+    <!-- Realisations -->
+    <section class="about" id="realisations">
+        <div class="section-head reveal">
+            <span class="eyebrow">Mes réalisations</span>
+            <h2>Un aperçu de <span class="grad-text">mon travail</span></h2>
+            <p>Des résultats qui parlent d'eux-mêmes.</p>
+        </div>
+        <div class="carousel reveal">
+            <button class="cbtn prev" aria-label="Précédent" onclick="scrollCarousel('photos', -1)">&#8249;</button>
+            <div class="track" id="photos">
+                <img src="images/IMG_0191.jpeg" alt="Salle de bain nettoyée" class="pslide">
+                <img src="images/IMG_0192.jpeg" alt="Gros plan bain" class="pslide">
+                <img src="images/IMG_0201.jpeg" alt="Toilette nettoyée" class="pslide">
+                <img src="images/lavabo.jpg" alt="Lavabo nettoyé" class="pslide">
+                <img src="images/cuisine.jpeg" alt="Cuisine nettoyée" class="pslide">
+                <img src="images/fenetre-lit.jpg" alt="Fenêtre et chambre" class="pslide">
+                <img src="images/lit.jpeg" alt="Lit fait" class="pslide">
+            </div>
+            <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('photos', 1)">&#8250;</button>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section id="temoignages">
         <div class="section-head reveal">
@@ -802,27 +855,9 @@
             </div>
             <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('avis', 1)">&#8250;</button>
         </div>
-    </section>
-
-    <!-- Realisations -->
-    <section class="about" id="realisations">
-        <div class="section-head reveal">
-            <span class="eyebrow">Mes réalisations</span>
-            <h2>Un aperçu de <span class="grad-text">mon travail</span></h2>
-            <p>Des résultats qui parlent d'eux-mêmes.</p>
-        </div>
-        <div class="carousel reveal">
-            <button class="cbtn prev" aria-label="Précédent" onclick="scrollCarousel('photos', -1)">&#8249;</button>
-            <div class="track" id="photos">
-                <img src="images/IMG_0191.jpeg" alt="Salle de bain nettoyée" class="pslide">
-                <img src="images/IMG_0192.jpeg" alt="Gros plan bain" class="pslide">
-                <img src="images/IMG_0201.jpeg" alt="Toilette nettoyée" class="pslide">
-                <img src="images/lavabo.jpg" alt="Lavabo nettoyé" class="pslide">
-                <img src="images/cuisine.jpeg" alt="Cuisine nettoyée" class="pslide">
-                <img src="images/fenetre-lit.jpg" alt="Fenêtre et chambre" class="pslide">
-                <img src="images/lit.jpeg" alt="Lit fait" class="pslide">
-            </div>
-            <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('photos', 1)">&#8250;</button>
+        <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+            <p style="color:var(--muted); margin-bottom:1rem;">Vous avez fait affaire avec moi&nbsp;? N'hésitez pas à partager votre expérience&nbsp;!</p>
+            <a href="https://www.google.com/search?q=Entretien+m%C3%A9nager+Vert+%26+Net&kgmid=/g/11nbzjp8j8" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem;">⭐ Laisser un avis Google</a>
         </div>
     </section>
 
@@ -830,8 +865,7 @@
     <section class="regions" id="regions">
         <div class="section-head reveal" style="margin-bottom:1rem;">
             <span class="eyebrow" style="background:rgba(255,255,255,0.15); color:#fff;">📍 Laurentides & Lanaudière</span>
-            <h2>Je dessers fièrement</h2>
-            <p style="color:rgba(255,255,255,0.8);">Mes secteurs desservis dans la région.</p>
+            <h2>Secteurs desservis</h2>
         </div>
         <div class="region-chips reveal">
             <span class="chip">Saint-Hippolyte</span>
@@ -910,18 +944,23 @@
         function scrollCarousel(id, dir) {
             const track = document.getElementById(id);
             if (!track) return;
-            const first = track.querySelector('*');
-            const gap = parseFloat(getComputedStyle(track).columnGap) || 20;
-            const step = first ? first.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
-            const maxScroll = track.scrollWidth - track.clientWidth;
+            const items = Array.from(track.children);
+            if (!items.length) return;
             const tol = 5;
-            if (dir > 0 && track.scrollLeft >= maxScroll - tol) {
-                track.scrollTo({ left: 0, behavior: 'smooth' });
-            } else if (dir < 0 && track.scrollLeft <= tol) {
-                track.scrollTo({ left: maxScroll, behavior: 'smooth' });
-            } else {
-                track.scrollBy({ left: dir * step, behavior: 'smooth' });
-            }
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            if (dir > 0 && track.scrollLeft >= maxScroll - tol) { track.scrollTo({ left: 0, behavior: 'smooth' }); return; }
+            if (dir < 0 && track.scrollLeft <= tol) { track.scrollTo({ left: maxScroll, behavior: 'smooth' }); return; }
+            const center = track.scrollLeft + track.clientWidth / 2;
+            let idx = 0, best = Infinity;
+            items.forEach((it, i) => {
+                const c = it.offsetLeft + it.offsetWidth / 2;
+                const d = Math.abs(c - center);
+                if (d < best) { best = d; idx = i; }
+            });
+            const target = Math.max(0, Math.min(items.length - 1, idx + dir));
+            const it = items[target];
+            const left = it.offsetLeft - (track.clientWidth - it.offsetWidth) / 2;
+            track.scrollTo({ left: Math.max(0, Math.min(maxScroll, left)), behavior: 'smooth' });
         }
 
         // Close mobile menu on link click
@@ -942,5 +981,11 @@
                 .catch(() => { status.textContent = 'Une erreur est survenue. Veuillez me téléphoner au (450) 821-8141.'; status.style.color = '#d32f2f'; status.style.display = 'block'; btn.textContent = 'Envoyer la demande'; btn.disabled = false; });
         });
     </script>
+
+    <!-- Bouton flottant Appeler (mobile) -->
+    <a href="tel:4508218141" class="floating-call" aria-label="Appeler Catherine">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Appeler
+    </a>
 </body>
 </html>
