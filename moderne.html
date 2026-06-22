@@ -210,14 +210,26 @@
 
         /* About */
         .about { background: var(--bg-soft); }
-        .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: center; max-width: 1150px; margin: 0 auto; }
-        .about-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/5; }
-        .about-img img { width: 100%; height: 100%; object-fit: cover; }
-        .about h2 { font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; margin: 1rem 0 1.2rem; line-height: 1.1; }
-        .about p { color: var(--muted); margin-bottom: 1rem; }
-        .values { list-style: none; display: grid; gap: 0.7rem; margin-top: 1.5rem; }
-        .values li { display: flex; align-items: flex-start; gap: 0.7rem; font-weight: 500; font-size: 0.97rem; }
-        .values .tick { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: var(--green-pale); color: var(--green-dark); display: grid; place-items: center; font-size: 0.8rem; font-weight: 700; margin-top: 2px; }
+        .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .lead-quote { font-family: 'Sora', sans-serif; font-size: clamp(1.3rem, 2.4vw, 1.65rem); font-weight: 600; line-height: 1.35; color: var(--ink); margin-bottom: 1.4rem; }
+        .about-story p { color: var(--muted); margin-bottom: 1rem; }
+        .signature { font-family: 'Sora', sans-serif; color: var(--green-dark); font-weight: 600; margin-top: 0.4rem; font-size: 1.05rem; }
+        .cred-card { background: linear-gradient(160deg, #fff, var(--green-pale)); border: 1px solid rgba(82,183,136,0.25); border-radius: var(--radius); padding: 1.9rem; box-shadow: var(--shadow); display: grid; gap: 1.3rem; align-content: start; }
+        .cred-row { display: flex; align-items: center; gap: 0.9rem; }
+        .cred-ico { width: 50px; height: 50px; flex: 0 0 auto; border-radius: 15px; background: #fff; display: grid; place-items: center; font-size: 1.4rem; box-shadow: var(--shadow-sm); }
+        .cred-row b { font-family: 'Sora', sans-serif; display: block; font-size: 1rem; }
+        .cred-row span { font-size: 0.85rem; color: var(--muted); }
+
+        /* CTA band */
+        .cta-band { background: linear-gradient(135deg, var(--green-dark), var(--green-bright)); text-align: center; }
+        .cta-inner { max-width: 720px; margin: 0 auto; }
+        .cta-inner h2 { color: #fff; font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.8rem; }
+        .cta-inner p { color: rgba(255,255,255,0.92); margin-bottom: 2rem; font-size: 1.1rem; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-light { background: #fff; color: var(--green-dark); box-shadow: 0 10px 24px rgba(0,0,0,0.15); }
+        .btn-light:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(0,0,0,0.22); }
+        .btn-outline-light { background: rgba(255,255,255,0.14); color: #fff; border: 1.5px solid rgba(255,255,255,0.6); }
+        .btn-outline-light:hover { background: rgba(255,255,255,0.24); transform: translateY(-3px); }
 
         /* Services */
         .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
@@ -404,15 +416,10 @@
         <div class="hero-text reveal">
             <span class="eyebrow">🌿 Écologique · Grade clinique</span>
             <h1>Faire briller <span class="grad-text">sans polluer</span></h1>
-            <p class="lead">Entretien ménager écologique et sécuritaire pour les enfants et les animaux. Biodégradable pour les fosses septiques. Au service de vos espaces résidentiels, locatifs et commerciaux.</p>
+            <p class="lead">Un entretien ménager écologique de grade clinique — pensé pour vos proches, vos animaux et la planète. Des résultats impeccables, sans compromis.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn btn-primary">Obtenir une estimation gratuite</a>
                 <a href="tel:4508218141" class="btn btn-ghost">📞 (450) 821-8141</a>
-            </div>
-            <div class="hero-mini">
-                <div><b>7 ans</b><span>d'expertise clinique</span></div>
-                <div><b>1 M$</b><span>assurance responsabilité</span></div>
-                <div><b>5,0 ★</b><span>avis clients</span></div>
             </div>
         </div>
         <div class="hero-visual reveal">
@@ -434,23 +441,23 @@
 
     <!-- About -->
     <section class="about" id="a-propos">
+        <div class="section-head reveal">
+            <span class="eyebrow">À propos</span>
+            <h2>Catherine Lessard, <span class="grad-text">propriétaire</span></h2>
+        </div>
         <div class="about-grid">
-            <div class="about-img reveal"><img src="images/Image 1.jpeg" alt="Catherine Lessard"></div>
-            <div class="reveal">
-                <span class="eyebrow">À propos</span>
-                <h2>Catherine Lessard, <span class="grad-text">propriétaire</span></h2>
-                <p>Bonjour à tous !</p>
-                <p>Avec mes 7 ans d'expérience en protocoles de désinfection, de stérilisation et de biosécurité en milieux critiques (santé, vétérinaire et animalier), je mets désormais cette expertise au service de vos propriétés et commerces dans les Laurentides et Lanaudière.</p>
-                <ul class="values">
-                    <li><span class="tick">✓</span> Produits québécois et écoresponsables</li>
-                    <li><span class="tick">✓</span> Formules véganes et sans cruauté</li>
-                    <li><span class="tick">✓</span> Sécuritaires pour les enfants et les animaux</li>
-                    <li><span class="tick">✓</span> Service à la carte pour vos besoins spécifiques</li>
-                    <li><span class="tick">✓</span> Disponible 24/7 pour les urgences locatives</li>
-                    <li><span class="tick">✓</span> Assurance responsabilité (1&nbsp;M$)</li>
-                    <li><span class="tick">✓</span> Facturation en règle et estimation gratuite</li>
-                </ul>
+            <div class="about-story reveal">
+                <p class="lead-quote">« Faire briller sans polluer », c'est plus qu'un slogan — c'est ma façon de travailler.</p>
+                <p>Bonjour à tous ! Avec mes 7 ans d'expérience en protocoles de désinfection, de stérilisation et de biosécurité en milieux critiques (santé, vétérinaire et animalier), je mets désormais cette expertise au service de vos propriétés et commerces dans les Laurentides et Lanaudière.</p>
+                <p>À chaque visite, j'applique la même rigueur et le même souci du détail qui ont défini ma carrière — avec des produits écologiques sûrs pour ceux que vous aimez.</p>
+                <p class="signature">— Catherine</p>
             </div>
+            <aside class="cred-card reveal">
+                <div class="cred-row"><span class="cred-ico">🔬</span><div><b>Formation clinique</b><span>Milieux santé, vétérinaire & animalier</span></div></div>
+                <div class="cred-row"><span class="cred-ico">🛡️</span><div><b>Assurance 1 M$</b><span>Responsabilité civile</span></div></div>
+                <div class="cred-row"><span class="cred-ico">🌿</span><div><b>100 % écologique</b><span>Produits québécois & biodégradables</span></div></div>
+                <div class="cred-row"><span class="cred-ico">🧾</span><div><b>Facturation en règle</b><span>Reçus et factures officiels</span></div></div>
+            </aside>
         </div>
     </section>
 
@@ -575,16 +582,16 @@
     <section class="why" id="pourquoi">
         <div class="section-head reveal">
             <span class="eyebrow">Pourquoi me choisir</span>
-            <h2>La <span class="grad-text">tranquillité d'esprit</span>, garantie</h2>
-            <p>Une rigueur clinique alliée à un service professionnel, assuré et écoresponsable. Profitez d'une tranquillité d'esprit totale pour votre foyer, votre propriété locative ou votre commerce.</p>
+            <h2>La différence <span class="grad-text">Vert & Net</span></h2>
+            <p>Six bonnes raisons de me confier votre espace, en toute confiance.</p>
         </div>
         <div class="why-grid">
-            <div class="feature reveal"><div class="ico">🌿</div><h4>Produits écologiques</h4><p>Formules québécoises, véganes et biodégradables, sécuritaires pour les fosses septiques.</p></div>
-            <div class="feature reveal"><div class="ico">🔬</div><h4>Rigueur clinique</h4><p>Des protocoles de désinfection issus des milieux de la santé, vétérinaire et animalier.</p></div>
-            <div class="feature reveal"><div class="ico">🛡️</div><h4>Assurée & en règle</h4><p>Assurance responsabilité de 1 M$ et facturation en règle pour votre tranquillité.</p></div>
-            <div class="feature reveal"><div class="ico">💵</div><h4>Estimation gratuite</h4><p>Une estimation sans frais et sans engagement pour planifier votre entretien.</p></div>
-            <div class="feature reveal"><div class="ico">🐾</div><h4>Sécuritaire pour tous</h4><p>Sans danger pour les enfants et les animaux qui partagent votre espace.</p></div>
-            <div class="feature reveal"><div class="ico">✨</div><h4>Services sur mesure</h4><p>J'adapte mon expertise à vos besoins, du résidentiel au commercial.</p></div>
+            <div class="feature reveal"><div class="ico">🌿</div><h4>Sain pour la planète</h4><p>Des produits québécois, véganes et biodégradables, sans danger pour vos fosses septiques.</p></div>
+            <div class="feature reveal"><div class="ico">🐾</div><h4>Sûr pour vos proches</h4><p>Aucun résidu toxique : vos enfants et vos animaux profitent d'un espace impeccable en toute sécurité.</p></div>
+            <div class="feature reveal"><div class="ico">🔬</div><h4>Propreté de grade clinique</h4><p>La minutie et les standards de désinfection des milieux critiques, appliqués chez vous.</p></div>
+            <div class="feature reveal"><div class="ico">🕐</div><h4>Disponible 24/7</h4><p>Une urgence locative ou un imprévu ? Je réponds présente quand vous en avez besoin.</p></div>
+            <div class="feature reveal"><div class="ico">🤝</div><h4>Sur mesure & sans engagement</h4><p>Un service à la carte adapté à vos besoins, avec estimation gratuite.</p></div>
+            <div class="feature reveal"><div class="ico">🏆</div><h4>Service professionnel</h4><p>Ponctualité, discrétion et résultats constants, visite après visite.</p></div>
         </div>
     </section>
 
@@ -687,13 +694,25 @@
         </div>
     </section>
 
+    <!-- CTA band -->
+    <section class="cta-band">
+        <div class="cta-inner reveal">
+            <h2>Envie de faire briller votre espace ?</h2>
+            <p>Recevez une estimation gratuite et sans engagement, adaptée à vos besoins.</p>
+            <div class="cta-actions">
+                <a href="#contact" class="btn btn-light">Demander mon estimation</a>
+                <a href="tel:4508218141" class="btn btn-outline-light">📞 (450) 821-8141</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact -->
     <section id="contact">
         <div class="contact-wrap">
             <div class="contact-info reveal">
                 <span class="eyebrow">Contactez-moi</span>
-                <h2>Demande <span class="grad-text">d'estimation</span></h2>
-                <p>Obtenez une estimation sans frais et sans engagement. Je vous réponds rapidement !</p>
+                <h2>Parlons de <span class="grad-text">votre projet</span></h2>
+                <p>Remplissez le formulaire ci-dessous et je vous reviens rapidement, avec plaisir !</p>
                 <div class="contact-line"><span class="ico">📞</span> (450) 821-8141</div>
                 <div class="contact-line"><span class="ico">✉️</span> entretienmenagervertetnet@gmail.com</div>
                 <div class="contact-line"><span class="ico">📍</span> Laurentides & Lanaudière</div>
