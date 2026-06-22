@@ -407,8 +407,8 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         .service-card {
@@ -531,6 +531,109 @@
             color: var(--text-light);
             font-style: italic;
             margin-top: 0.8rem;
+        }
+
+        /* Carrousel (avis + photos) */
+        .carousel {
+            position: relative;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 3.2rem;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 1.2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 0.5rem 0.3rem 1rem;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        .carousel-track > * {
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: none;
+            background: var(--green-dark);
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+            transition: background 0.2s, transform 0.2s;
+            z-index: 2;
+        }
+        .carousel-btn:hover { background: var(--green-mid); }
+        .carousel-btn:active { transform: translateY(-50%) scale(0.92); }
+        .carousel-btn.prev { left: 0; }
+        .carousel-btn.next { right: 0; }
+
+        /* Cartes d'avis */
+        .review-card {
+            width: 300px;
+            min-height: 300px;
+            background: var(--white);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1.6rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .review-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.6rem;
+            margin-bottom: 0.4rem;
+        }
+        .review-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+        .review-logo { flex: 0 0 auto; margin-top: 2px; }
+        .review-stars {
+            color: #f5a623;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .review-text {
+            color: var(--text-light);
+            font-size: 0.94rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Photos carrousel */
+        .photo-slide {
+            height: 300px;
+            width: auto;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .carousel { padding: 0 2.6rem; }
+            .review-card { width: 260px; min-height: 280px; }
+            .photo-slide { height: 240px; }
+            .carousel-btn { width: 40px; height: 40px; font-size: 1.1rem; }
         }
 
         /* Why Us */
@@ -853,8 +956,8 @@
             }
 
             .services-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
             }
 
             .why-grid {
@@ -907,6 +1010,11 @@
 
             .section-header h2 {
                 font-size: 1.7rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
             }
         }
     </style>
@@ -985,7 +1093,7 @@
                 <span class="section-label">À propos</span>
                 <h2>Catherine Lessard, propriétaire</h2>
                 <p>Bonjour à tous !</p>
-                <p>Avec mes 7 ans d'expérience en protocoles de désinfection, de stérilisation et de biosécurité en milieux critiques (hospitalier, vétérinaire et animalier), je mets désormais cette expertise au service de vos propriétés dans les Laurentides et Lanaudière.</p>
+                <p>Avec mes 7 ans d'expérience en protocoles de désinfection, de stérilisation et de biosécurité en milieux critiques (santé, vétérinaire et animalier), je mets désormais cette expertise au service de vos propriétés et commerces dans les Laurentides et Lanaudière.</p>
                 <ul class="values-list">
                     <li><span class="check">&#10003;</span> Produits québécois et écoresponsables</li>
                     <li><span class="check">&#10003;</span> Formules véganes et sans cruauté</li>
@@ -1004,7 +1112,7 @@
         <div class="section-header">
             <span class="section-label">Mes services</span>
             <h2>Des solutions pour chaque besoin</h2>
-            <p>Que ce soit pour votre résidence, votre chalet ou votre Airbnb, j'ai le service qu'il vous faut.</p>
+            <p>Que ce soit pour vos espaces résidentiels, locatifs (Airbnb) ou commerciaux, j'ai le service qu'il vous faut.</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
@@ -1200,6 +1308,67 @@
                     </div>
                 </details>
             </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Entretien commercial & bureaux</h3>
+                <p>Un entretien complet de vos espaces de travail pour un environnement propre, sain et accueillant, autant pour vos employés que pour votre clientèle.</p>
+                <details class="plan-details">
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan-content">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Chargement & démarrage (si vide)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Tables</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Douches</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilettes</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛋 Bureaux, salle d'attente, salle de conférence & aire(s) commune(s)</h5>
+                        <ul>
+                            <li><strong>Tables</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Fauteuils</strong></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes & poignées</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Rebords</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5 class="extras">➕ Besoins spécifiques <em style="font-weight:400; font-size:0.82rem;">(Extras $ + taxes)</em></h5>
+                        <ul>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoire(s) & placard(s)</strong><span class="desc">Intérieur (si vide(s))</span></li>
+                            <li><strong>Électroménager(s)</strong><span class="desc">Intérieur</span></li>
+                            <li><strong>Vitre(s) intérieure(s) & cadrage(s)</strong><span class="desc">Moustiquaire(s) inclus (si amovible(s) de l'intérieur)</span></li>
+                            <li><strong>Murs & plafonds</strong><span class="desc">Lavage complet (hauteur maximale de 10′)</span></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
         </div>
     </section>
 
@@ -1207,7 +1376,7 @@
     <section class="why-us" id="pourquoi">
         <div class="section-header">
             <h2>Pourquoi me choisir</h2>
-            <p>Une rigueur clinique alliée à un service professionnel, assuré et écoresponsable. Profitez d'une tranquillité d'esprit totale pour votre foyer ou votre propriété locative.</p>
+            <p>Une rigueur clinique alliée à un service professionnel, assuré et écoresponsable. Profitez d'une tranquillité d'esprit totale pour votre foyer, votre propriété locative ou votre commerce.</p>
         </div>
         <div class="why-grid">
             <div class="why-card">
@@ -1241,20 +1410,105 @@
         </div>
     </section>
 
-    <!-- Témoignage -->
+    <!-- Témoignages -->
     <section class="testimonial" id="temoignage" style="padding:2.5rem 5% 5rem; background:var(--white);">
         <div class="section-header" style="margin-bottom:2rem;">
-            <h2>Témoignage</h2>
+            <h2>Témoignages</h2>
+            <p>Votre satisfaction, ma plus belle récompense.</p>
         </div>
-        <div style="max-width:780px; margin:0 auto; background:var(--cream); border-radius:20px; padding:2.5rem 2rem; box-shadow:0 4px 20px rgba(0,0,0,0.06); text-align:center;">
-            <img src="images/temoignage.png" alt="Témoignage d'une cliente satisfaite" style="width:100%; max-width:280px; height:auto; border-radius:15px; margin:0 auto 1.5rem; display:block;">
-            <h3 style="font-size:1.3rem; color:var(--green-dark); margin-bottom:1.2rem;">Votre satisfaction, ma plus belle récompense</h3>
-            <div style="max-width:600px; margin:0 auto; text-align:left;">
-                <p style="color:var(--text-dark); font-size:1rem; line-height:1.7; max-width:none; margin:0 0 0.8rem 0;">C'est toujours un vrai bonheur de savoir mes clients satisfaits&nbsp;! ☺️✨</p>
-                <p style="color:var(--text-dark); font-size:1rem; line-height:1.7; max-width:none; margin:0 0 0.8rem 0;">Comme le souligne ce témoignage, j'accorde beaucoup d'importance aux petits détails et à l'écoute. Lire ce genre de retour au fil de notre collaboration me touche énormément.</p>
-                <p style="color:var(--text-dark); font-size:1rem; line-height:1.7; max-width:none; margin:0;">Un grand merci pour cette confiance qui dure dans notre belle région de Lanaudière&nbsp;! 🙏🏼💚</p>
-                <p style="margin:1.2rem 0 0 0; color:var(--text-light); font-size:0.9rem; font-style:italic; text-align:left; max-width:none;">— Catherine</p>
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Avis précédents" onclick="scrollCarousel('avis', -1)">&#8249;</button>
+            <div class="carousel-track" id="avis">
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Katherine</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Catherine est une personne attentionnée aux détails, efficace et surtout de confiance ! Je vous la recommande.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Loryanne</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Personne minutieuse, ne tourne pas les coins ronds ! Elle s'applique dans son travail. Maison très propre même avec nos animaux !</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Claudel</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text" style="color:var(--text-light); font-style:italic;">A donné une note de 5 étoiles.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Témoignage<br>d'une cliente</span>
+                        <span class="review-logo" style="font-size:1.4rem;">💬</span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Merci beaucoup Catherine pour votre travail, vous êtes super ! Vous êtes très attentive aux détails et j'aime ça.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Marie Lyne</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Quand on parle d'une « perle », et bien Catherine en est une vraie ! Quelle personne exceptionnelle ! Grande dévotion à son travail et à faire en sorte que tout le monde soit satisfait/content/heureux !</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Rosalie</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Catherine est tellement minutieuse et attentionnée envers ses clients ce qui fait d'elle la meilleure dans son domaine. Je recommande à tout le monde.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Julien</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Service impeccable ! Catherine est tellement adorable. Je recommande !!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Annie</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Catherine travail très bien elle est minutieuse et attentionné et à l'écoute des besoins.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-head">
+                        <span class="review-name">Natacha</span>
+                        <span class="review-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg>
+                        </span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">Catherine est une personne très minutieuse et très attentionné.</p>
+                </div>
             </div>
+            <button class="carousel-btn next" aria-label="Avis suivants" onclick="scrollCarousel('avis', 1)">&#8250;</button>
         </div>
     </section>
 
@@ -1265,18 +1519,18 @@
             <h2>Un aperçu de mon travail</h2>
             <p>Des résultats qui parlent d'eux-mêmes.</p>
         </div>
-        <div style="max-width:1100px; margin:0 auto;">
-            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem; margin-bottom:0.8rem;">
-                <img src="images/IMG_0191.jpeg" alt="Salle de bain complète nettoyée" style="height:240px; width:auto; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.12); display:block;">
-                <img src="images/IMG_0192.jpeg" alt="Gros plan bain impeccable" style="height:240px; width:auto; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.12); display:block;">
-                <img src="images/IMG_0201.jpeg" alt="Toilette nettoyée" style="height:240px; width:auto; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.12); display:block;">
-                <img src="images/lavabo.jpg" alt="Lavabo nettoyé" style="height:240px; width:auto; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.12); display:block;">
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Photos précédentes" onclick="scrollCarousel('photos', -1)">&#8249;</button>
+            <div class="carousel-track" id="photos">
+                <img src="images/IMG_0191.jpeg" alt="Salle de bain complète nettoyée" class="photo-slide">
+                <img src="images/IMG_0192.jpeg" alt="Gros plan bain impeccable" class="photo-slide">
+                <img src="images/IMG_0201.jpeg" alt="Toilette nettoyée" class="photo-slide">
+                <img src="images/lavabo.jpg" alt="Lavabo nettoyé" class="photo-slide">
+                <img src="images/cuisine.jpeg" alt="Cuisine nettoyée" class="photo-slide">
+                <img src="images/fenetre-lit.jpg" alt="Fenêtre et chambre impeccables" class="photo-slide">
+                <img src="images/lit.jpeg" alt="Lit soigneusement fait" class="photo-slide">
             </div>
-            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;">
-                <img src="images/cuisine.jpeg" alt="Cuisine nettoyée" style="height:240px; width:auto; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.12); display:block;">
-                <img src="images/fenetre-lit.jpg" alt="Fenêtre et chambre impeccables" style="height:240px; width:auto; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.12); display:block;">
-                <img src="images/lit.jpeg" alt="Lit soigneusement fait" style="height:240px; width:auto; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.12); display:block;">
-            </div>
+            <button class="carousel-btn next" aria-label="Photos suivantes" onclick="scrollCarousel('photos', 1)">&#8250;</button>
         </div>
     </section>
 
@@ -1353,6 +1607,7 @@
                             <option value="Entretien régulier">Entretien régulier</option>
                             <option value="Grand ménage">Grand ménage</option>
                             <option value="Entretien locatif & Airbnb">Entretien locatif & Airbnb</option>
+                            <option value="Entretien commercial & bureaux">Entretien commercial & bureaux</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -1395,6 +1650,15 @@
                             btn.disabled = false;
                         });
                     });
+
+                    function scrollCarousel(id, dir) {
+                        const track = document.getElementById(id);
+                        if (!track) return;
+                        const first = track.querySelector('*');
+                        const gap = parseFloat(getComputedStyle(track).columnGap) || 19;
+                        const step = first ? first.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+                        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+                    }
                 </script>
             </div>
         </div>
