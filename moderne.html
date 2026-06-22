@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entretien ménager Vert & Net — Version moderne (aperçu)</title>
+    <meta name="description" content="Entretien ménager écologique de grade clinique dans les Laurentides et Lanaudière. Résidentiel, locatif, Airbnb et commercial.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-darkest: #1b4332;
+            --green-dark: #2d6a4f;
+            --green-mid: #40916c;
+            --green-bright: #52b788;
+            --green-light: #95d5b2;
+            --green-pale: #d8f3dc;
+            --ink: #14211c;
+            --muted: #5a6b64;
+            --bg: #ffffff;
+            --bg-soft: #f5f9f7;
+            --white: #ffffff;
+            --shadow: 0 18px 50px rgba(27, 67, 50, 0.10);
+            --shadow-sm: 0 8px 24px rgba(27, 67, 50, 0.08);
+            --radius: 26px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .display { font-family: 'Sora', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        section { padding: 6rem 6%; position: relative; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green-pale);
+            color: var(--green-dark);
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+        .section-head { text-align: center; max-width: 680px; margin: 0 auto 3.5rem; }
+        .section-head h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 1.2rem 0 0.8rem;
+            line-height: 1.1;
+        }
+        .section-head p { color: var(--muted); font-size: 1.08rem; }
+        .grad-text {
+            background: linear-gradient(120deg, var(--green-mid), var(--green-bright));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.9rem;
+            border-radius: 50px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+        }
+        .btn-primary {
+            background: linear-gradient(120deg, var(--green-dark), var(--green-bright));
+            color: #fff;
+            box-shadow: 0 12px 28px rgba(45, 106, 79, 0.35);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(45, 106, 79, 0.45); }
+        .btn-ghost {
+            background: rgba(255,255,255,0.7);
+            color: var(--green-dark);
+            border: 1.5px solid var(--green-light);
+            backdrop-filter: blur(8px);
+        }
+        .btn-ghost:hover { background: #fff; transform: translateY(-3px); }
+
+        /* Preview banner */
+        .preview-banner {
+            background: linear-gradient(120deg, var(--green-darkest), var(--green-mid));
+            color: #fff;
+            text-align: center;
+            font-size: 0.88rem;
+            padding: 0.6rem 1rem;
+            font-weight: 500;
+        }
+        .preview-banner a { text-decoration: underline; font-weight: 600; }
+
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 6%;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(27,67,50,0.07);
+        }
+        .nav-brand { display: flex; align-items: center; gap: 0.7rem; font-family: 'Sora', sans-serif; font-weight: 700; }
+        .nav-brand img { width: 42px; height: 42px; border-radius: 12px; object-fit: cover; }
+        .nav-brand span { font-size: 1rem; line-height: 1.1; }
+        .nav-brand b { color: var(--green-mid); }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--green-dark); }
+        .nav-cta { background: var(--ink); color: #fff; padding: 0.7rem 1.4rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s; }
+        .nav-cta:hover { transform: translateY(-2px); }
+        .nav-toggle { display: none; font-size: 1.6rem; background: none; border: none; cursor: pointer; color: var(--green-dark); }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 6% 6rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            background:
+                radial-gradient(1100px 500px at 85% -10%, rgba(82,183,136,0.18), transparent 60%),
+                radial-gradient(800px 500px at -10% 30%, rgba(149,213,178,0.22), transparent 55%);
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .blob.b1 { width: 320px; height: 320px; background: var(--green-light); top: 10%; right: 6%; animation: float 9s ease-in-out infinite; }
+        .blob.b2 { width: 240px; height: 240px; background: var(--green-pale); bottom: 5%; left: 8%; animation: float 11s ease-in-out infinite reverse; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-26px); } }
+
+        .hero-text { position: relative; z-index: 2; }
+        .hero-text h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+            font-weight: 800;
+            line-height: 1.04;
+            letter-spacing: -0.03em;
+            margin: 1.4rem 0 1.2rem;
+        }
+        .hero-text p.lead { font-size: 1.18rem; color: var(--muted); max-width: 520px; margin-bottom: 2rem; }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .hero-mini { display: flex; gap: 2rem; margin-top: 2.6rem; flex-wrap: wrap; }
+        .hero-mini div b { font-family: 'Sora'; font-size: 1.6rem; color: var(--green-dark); display: block; }
+        .hero-mini div span { font-size: 0.85rem; color: var(--muted); }
+
+        .hero-visual { position: relative; z-index: 2; }
+        .hero-photo {
+            border-radius: 34px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            aspect-ratio: 4/5;
+        }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .glass-card {
+            position: absolute;
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 20px;
+            padding: 1rem 1.3rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .glass-card .ico { width: 38px; height: 38px; border-radius: 12px; background: var(--green-pale); display: grid; place-items: center; font-size: 1.2rem; }
+        .gc1 { top: 8%; left: -6%; animation: float 7s ease-in-out infinite; }
+        .gc2 { bottom: 10%; right: -5%; animation: float 8s ease-in-out infinite reverse; }
+
+        /* Trust bar */
+        .trust {
+            background: var(--ink);
+            color: #fff;
+            padding: 2.6rem 6%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+            border-radius: 0;
+        }
+        .trust .stat b { font-family: 'Sora'; font-size: 2.2rem; display: block; background: linear-gradient(120deg, var(--green-light), var(--green-bright)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .trust .stat span { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+
+        /* About */
+        .about { background: var(--bg-soft); }
+        .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: center; max-width: 1150px; margin: 0 auto; }
+        .about-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/5; }
+        .about-img img { width: 100%; height: 100%; object-fit: cover; }
+        .about h2 { font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; margin: 1rem 0 1.2rem; line-height: 1.1; }
+        .about p { color: var(--muted); margin-bottom: 1rem; }
+        .values { list-style: none; display: grid; gap: 0.7rem; margin-top: 1.5rem; }
+        .values li { display: flex; align-items: flex-start; gap: 0.7rem; font-weight: 500; font-size: 0.97rem; }
+        .values .tick { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: var(--green-pale); color: var(--green-dark); display: grid; place-items: center; font-size: 0.8rem; font-weight: 700; margin-top: 2px; }
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .svc {
+            background: var(--white);
+            border: 1px solid rgba(27,67,50,0.08);
+            border-radius: var(--radius);
+            padding: 2rem 1.6rem;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .svc::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(82,183,136,0.10), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .svc:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: var(--green-light); }
+        .svc:hover::before { opacity: 1; }
+        .svc-ico {
+            width: 62px; height: 62px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--green-pale), var(--green-light));
+            display: grid; place-items: center;
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            position: relative; z-index: 1;
+        }
+        .svc h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 0.6rem; position: relative; z-index: 1; }
+        .svc p { color: var(--muted); font-size: 0.92rem; position: relative; z-index: 1; }
+        .svc details { margin-top: 1rem; position: relative; z-index: 1; }
+        .svc summary {
+            cursor: pointer; list-style: none;
+            font-weight: 600; font-size: 0.88rem; color: var(--green-dark);
+            display: inline-flex; align-items: center; gap: 0.4rem;
+        }
+        .svc summary::-webkit-details-marker { display: none; }
+        .svc summary::after { content: '→'; transition: transform 0.2s; }
+        .svc details[open] summary::after { transform: rotate(90deg); }
+        .plan { margin-top: 1rem; font-size: 0.85rem; text-align: left; }
+        .plan h5 { font-family: 'Sora'; font-size: 0.9rem; color: var(--green-dark); margin: 0.9rem 0 0.4rem; }
+        .plan h5:first-child { margin-top: 0; }
+        .plan ul { list-style: none; padding: 0; margin: 0 0 0.4rem; }
+        .plan li { padding: 0.2rem 0 0.2rem 1.1rem; position: relative; color: var(--ink); }
+        .plan li::before { content: '•'; position: absolute; left: 0; color: var(--green-bright); }
+        .plan li .d { display: block; color: var(--muted); font-size: 0.78rem; }
+        .plan .note { font-style: italic; color: var(--muted); font-size: 0.8rem; margin-top: 0.3rem; }
+
+        /* Why */
+        .why { background: var(--bg-soft); }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; max-width: 1100px; margin: 0 auto; }
+        .feature { background: #fff; border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow-sm); transition: transform 0.3s; }
+        .feature:hover { transform: translateY(-6px); }
+        .feature .ico { width: 54px; height: 54px; border-radius: 16px; background: var(--green-pale); display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 1rem; }
+        .feature h4 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+        .feature p { color: var(--muted); font-size: 0.9rem; }
+
+        /* Carousel */
+        .carousel { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 3.4rem; }
+        .track { display: flex; gap: 1.3rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0.3rem 1rem; scrollbar-width: none; }
+        .track::-webkit-scrollbar { display: none; }
+        .track > * { flex: 0 0 auto; scroll-snap-align: center; }
+        .cbtn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; border-radius: 50%; border: none;
+            background: linear-gradient(120deg, var(--green-dark), var(--green-bright));
+            color: #fff; font-size: 1.4rem; cursor: pointer; z-index: 3;
+            display: grid; place-items: center;
+            box-shadow: 0 6px 18px rgba(45,106,79,0.35);
+            transition: transform 0.2s;
+        }
+        .cbtn:hover { transform: translateY(-50%) scale(1.08); }
+        .cbtn.prev { left: 0; }
+        .cbtn.next { right: 0; }
+
+        .rcard {
+            width: 320px; min-height: 250px;
+            background: #fff; border-radius: 22px;
+            box-shadow: var(--shadow-sm);
+            padding: 1.7rem 1.6rem;
+            display: flex; flex-direction: column;
+            border: 1px solid rgba(27,67,50,0.06);
+        }
+        .rhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; }
+        .rname { font-family: 'Sora'; font-weight: 700; font-size: 1.12rem; line-height: 1.2; }
+        .rstars { color: #f5a623; letter-spacing: 2px; margin: 0.5rem 0 0.9rem; }
+        .rtext { color: var(--muted); font-size: 0.93rem; line-height: 1.55; }
+
+        .pslide { height: 320px; width: auto; border-radius: 20px; box-shadow: var(--shadow-sm); }
+
+        /* Regions */
+        .regions { background: linear-gradient(135deg, var(--green-darkest), var(--green-mid)); color: #fff; text-align: center; }
+        .regions h2 { color: #fff; }
+        .region-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; max-width: 760px; margin: 2rem auto 0; }
+        .chip { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 0.6rem 1.2rem; border-radius: 50px; font-weight: 500; font-size: 0.92rem; backdrop-filter: blur(6px); }
+
+        /* CTA + Contact */
+        .contact-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; max-width: 1150px; margin: 0 auto; align-items: start; }
+        .contact-info h2 { font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin: 1rem 0 1rem; }
+        .contact-info p { color: var(--muted); margin-bottom: 1.6rem; }
+        .contact-line { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; font-weight: 500; }
+        .contact-line .ico { width: 46px; height: 46px; border-radius: 14px; background: var(--green-pale); display: grid; place-items: center; font-size: 1.2rem; }
+        .form-card { background: #fff; border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow); border: 1px solid rgba(27,67,50,0.06); }
+        .fg { margin-bottom: 1.1rem; }
+        .fg label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 0.4rem; }
+        .fg input, .fg select, .fg textarea {
+            width: 100%; padding: 0.85rem 1rem; border: 1.5px solid #e2ebe7; border-radius: 14px;
+            font-family: inherit; font-size: 0.95rem; background: var(--bg-soft); transition: border-color 0.2s, background 0.2s;
+        }
+        .fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--green-bright); background: #fff; }
+        .fg textarea { resize: vertical; min-height: 100px; }
+        .form-status { display: none; margin-top: 0.8rem; font-weight: 600; }
+
+        /* Footer */
+        footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 6% 2rem; text-align: center; }
+        footer .fbrand { display: inline-flex; align-items: center; gap: 0.7rem; color: #fff; font-family: 'Sora'; font-weight: 700; margin-bottom: 1rem; }
+        footer .fbrand img { width: 44px; height: 44px; border-radius: 12px; }
+        footer .fsoc { margin: 1.2rem 0; }
+        footer .fsoc a { color: var(--green-light); font-weight: 600; }
+        footer small { display: block; margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+
+        /* Reveal animation */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* Responsive */
+        @media (max-width: 980px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-text p.lead { margin-left: auto; margin-right: auto; }
+            .hero-actions, .hero-mini { justify-content: center; }
+            .hero-visual { max-width: 420px; margin: 0 auto; }
+            .gc1 { left: 0; } .gc2 { right: 0; }
+            .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+            .about-img { max-width: 420px; margin: 0 auto; }
+            .trust { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; max-width: 480px; }
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            nav.open .nav-links {
+                display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+                background: #fff; padding: 1.5rem 6%; gap: 1.2rem; box-shadow: var(--shadow); border-top: 1px solid rgba(27,67,50,0.07);
+            }
+        }
+        @media (max-width: 560px) {
+            section { padding: 4rem 6%; }
+            .services-grid { grid-template-columns: 1fr; max-width: 380px; }
+            .trust { grid-template-columns: 1fr; }
+            .carousel { padding: 0 2.8rem; }
+            .rcard { width: 270px; }
+            .pslide { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preview-banner">
+        ✨ Ceci est un <strong>aperçu d'une version moderne</strong> — votre site actuel n'est pas modifié. <a href="https://entretienvertetnet.ca">Voir le site actuel</a>
+    </div>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <a href="#accueil" class="nav-brand">
+            <img src="images/IMG_0283.jpeg" alt="Logo Vert & Net">
+            <span>Entretien ménager<br><b>Vert & Net</b></span>
+        </a>
+        <div class="nav-links">
+            <a href="#a-propos">À propos</a>
+            <a href="#services">Services</a>
+            <a href="#temoignages">Avis</a>
+            <a href="#realisations">Réalisations</a>
+            <a href="#contact" class="nav-cta">Estimation gratuite</a>
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="accueil">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="hero-text reveal">
+            <span class="eyebrow">🌿 Écologique · Grade clinique</span>
+            <h1>Faire briller <span class="grad-text">sans polluer</span></h1>
+            <p class="lead">Entretien ménager écologique et sécuritaire pour les enfants et les animaux. Biodégradable pour les fosses septiques. Au service de vos espaces résidentiels, locatifs et commerciaux.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Obtenir une estimation gratuite</a>
+                <a href="tel:4508218141" class="btn btn-ghost">📞 (450) 821-8141</a>
+            </div>
+            <div class="hero-mini">
+                <div><b>7 ans</b><span>d'expertise clinique</span></div>
+                <div><b>1 M$</b><span>assurance responsabilité</span></div>
+                <div><b>5,0 ★</b><span>avis clients</span></div>
+            </div>
+        </div>
+        <div class="hero-visual reveal">
+            <div class="hero-photo">
+                <img src="images/Image 1.jpeg" alt="Catherine Lessard, propriétaire">
+            </div>
+            <div class="glass-card gc1"><span class="ico">🐾</span> Sécuritaire enfants & animaux</div>
+            <div class="glass-card gc2"><span class="ico">🍁</span> Produits québécois</div>
+        </div>
+    </header>
+
+    <!-- Trust -->
+    <div class="trust">
+        <div class="stat reveal"><b>7</b><span>ans d'expérience</span></div>
+        <div class="stat reveal"><b>4</b><span>services sur mesure</span></div>
+        <div class="stat reveal"><b>9+</b><span>avis 5 étoiles</span></div>
+        <div class="stat reveal"><b>24/7</b><span>urgences locatives</span></div>
+    </div>
+
+    <!-- About -->
+    <section class="about" id="a-propos">
+        <div class="about-grid">
+            <div class="about-img reveal"><img src="images/Image 1.jpeg" alt="Catherine Lessard"></div>
+            <div class="reveal">
+                <span class="eyebrow">À propos</span>
+                <h2>Catherine Lessard, <span class="grad-text">propriétaire</span></h2>
+                <p>Bonjour à tous !</p>
+                <p>Avec mes 7 ans d'expérience en protocoles de désinfection, de stérilisation et de biosécurité en milieux critiques (santé, vétérinaire et animalier), je mets désormais cette expertise au service de vos propriétés et commerces dans les Laurentides et Lanaudière.</p>
+                <ul class="values">
+                    <li><span class="tick">✓</span> Produits québécois et écoresponsables</li>
+                    <li><span class="tick">✓</span> Formules véganes et sans cruauté</li>
+                    <li><span class="tick">✓</span> Sécuritaires pour les enfants et les animaux</li>
+                    <li><span class="tick">✓</span> Service à la carte pour vos besoins spécifiques</li>
+                    <li><span class="tick">✓</span> Disponible 24/7 pour les urgences locatives</li>
+                    <li><span class="tick">✓</span> Assurance responsabilité (1&nbsp;M$)</li>
+                    <li><span class="tick">✓</span> Facturation en règle et estimation gratuite</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="section-head reveal">
+            <span class="eyebrow">Mes services</span>
+            <h2>Des solutions pour <span class="grad-text">chaque besoin</span></h2>
+            <p>Que ce soit pour vos espaces résidentiels, locatifs (Airbnb) ou commerciaux, j'ai le service qu'il vous faut.</p>
+        </div>
+        <div class="services-grid">
+            <div class="svc reveal">
+                <div class="svc-ico">🏠</div>
+                <h3>Entretien régulier</h3>
+                <p>Le maintien d'une maison saine, semaine après semaine. Un service adapté à vos besoins spécifiques.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li>Armoires, tablettes & tiroirs<span class="d">Époussetage & façades</span></li>
+                            <li>Comptoirs & dosserets</li>
+                            <li>Robinetterie & évier<span class="d">Nettoyage & désinfection</span></li>
+                            <li>Toutes les surfaces<span class="d">Époussetage</span></li>
+                            <li>Électroménagers (extérieur), table, chaises, poubelle, recyclage</li>
+                            <li>Sols<span class="d">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li>Miroirs, céramique & surfaces chromées</li>
+                            <li>Armoires, comptoirs & étagères, douche, baignoire, toilette</li>
+                            <li>Sols<span class="d">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛋 Chambres & aires de séjour</h5>
+                        <ul>
+                            <li>Toutes les surfaces, miroirs, interrupteurs, portes</li>
+                            <li>Lits (les faire), poubelle, sols</li>
+                        </ul>
+                        <p class="note">Besoins spécifiques offerts en extra (literie, lessive, vitres, murs, etc.)</p>
+                    </div>
+                </details>
+            </div>
+            <div class="svc reveal">
+                <div class="svc-ico">💎</div>
+                <h3>Grand ménage</h3>
+                <p>Un nettoyage en profondeur pour redonner un éclat neuf à votre foyer. Idéal pour les changements de saison ou un emménagement.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li>Armoires, tablettes & tiroirs<span class="d">Façades & intérieurs (si vides)</span></li>
+                            <li>Hotte de cuisine, appareils (intérieur & extérieur)</li>
+                            <li>Comptoirs, robinetterie, surfaces, sols</li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li>Armoires, étagères, tablettes, comptoirs & tiroirs<span class="d">Intérieur & extérieur (si vides)</span></li>
+                            <li>Douche, baignoire, toilette, sols</li>
+                        </ul>
+                        <h5>🛋 Chambres & aires de séjour</h5>
+                        <ul>
+                            <li>Surfaces hautes, moulures, fenêtres (vitres intérieures)</li>
+                            <li>Laveuse & sécheuse, literie, murs & plafonds</li>
+                        </ul>
+                        <p class="note">Vaisselle et lessive offertes en extra.</p>
+                    </div>
+                </details>
+            </div>
+            <div class="svc reveal">
+                <div class="svc-ico">🔑</div>
+                <h3>Entretien locatif & Airbnb</h3>
+                <p>Une expérience 5 étoiles pour vos voyageurs. Gestion clé en main pour votre propriété ou votre chalet.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🛋 Service complet entre les séjours</h5>
+                        <ul>
+                            <li>Inspection exhaustive de la propriété</li>
+                            <li>Cuisine & salle de bain complètes</li>
+                            <li>Literie & serviettes<span class="d">Gestion de la lessive et mise en place</span></li>
+                            <li>Laveuse & sécheuse, consommables<span class="d">⚠️ Produits non fournis</span></li>
+                            <li>🔥 BBQ<span class="d">Grilles, tiroir à graisses, propane</span></li>
+                        </ul>
+                        <h5>💧 Option SPA</h5>
+                        <ul>
+                            <li>Entretien de base<span class="d">Filtre, chlore, ligne d'eau, couvercle, appoint d'eau</span></li>
+                        </ul>
+                        <p class="note">⚠️ Produits non fournis</p>
+                    </div>
+                </details>
+            </div>
+            <div class="svc reveal">
+                <div class="svc-ico">🏢</div>
+                <h3>Entretien commercial & bureaux</h3>
+                <p>Un entretien complet de vos espaces de travail pour un environnement propre, sain et accueillant, autant pour vos employés que pour votre clientèle.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li>Armoires, comptoirs, robinetterie, électroménagers</li>
+                            <li>Tables, chaises, poubelle, recyclage, sols</li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li>Miroirs, surfaces, douches, toilettes, sols</li>
+                        </ul>
+                        <h5>🛋 Bureaux, salle d'attente & conférence</h5>
+                        <ul>
+                            <li>Tables, chaises, fauteuils, surfaces</li>
+                            <li>Interrupteurs, portes, fenêtres, plinthes, sols</li>
+                        </ul>
+                        <p class="note">Surfaces hautes, vitres et murs offerts en extra.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why -->
+    <section class="why" id="pourquoi">
+        <div class="section-head reveal">
+            <span class="eyebrow">Pourquoi me choisir</span>
+            <h2>La <span class="grad-text">tranquillité d'esprit</span>, garantie</h2>
+            <p>Une rigueur clinique alliée à un service professionnel, assuré et écoresponsable. Profitez d'une tranquillité d'esprit totale pour votre foyer, votre propriété locative ou votre commerce.</p>
+        </div>
+        <div class="why-grid">
+            <div class="feature reveal"><div class="ico">🌿</div><h4>Produits écologiques</h4><p>Formules québécoises, véganes et biodégradables, sécuritaires pour les fosses septiques.</p></div>
+            <div class="feature reveal"><div class="ico">🔬</div><h4>Rigueur clinique</h4><p>Des protocoles de désinfection issus des milieux de la santé, vétérinaire et animalier.</p></div>
+            <div class="feature reveal"><div class="ico">🛡️</div><h4>Assurée & en règle</h4><p>Assurance responsabilité de 1 M$ et facturation en règle pour votre tranquillité.</p></div>
+            <div class="feature reveal"><div class="ico">💵</div><h4>Estimation gratuite</h4><p>Une estimation sans frais et sans engagement pour planifier votre entretien.</p></div>
+            <div class="feature reveal"><div class="ico">🐾</div><h4>Sécuritaire pour tous</h4><p>Sans danger pour les enfants et les animaux qui partagent votre espace.</p></div>
+            <div class="feature reveal"><div class="ico">✨</div><h4>Services sur mesure</h4><p>J'adapte mon expertise à vos besoins, du résidentiel au commercial.</p></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="temoignages">
+        <div class="section-head reveal">
+            <span class="eyebrow">Témoignages</span>
+            <h2>Votre satisfaction, <span class="grad-text">ma plus belle récompense</span></h2>
+        </div>
+        <div class="carousel reveal">
+            <button class="cbtn prev" aria-label="Précédent" onclick="scrollCarousel('avis', -1)">&#8249;</button>
+            <div class="track" id="avis">
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Katherine</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Catherine est une personne attentionnée aux détails, efficace et surtout de confiance ! Je vous la recommande.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Loryanne</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Personne minutieuse, ne tourne pas les coins ronds ! Elle s'applique dans son travail. Maison très propre même avec nos animaux !</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Claudel</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext" style="font-style:italic;">A donné une note de 5 étoiles.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Témoignage<br>d'une cliente</span><span>💬</span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Merci beaucoup Catherine pour votre travail, vous êtes super ! Vous êtes très attentive aux détails et j'aime ça.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Marie Lyne</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Quand on parle d'une « perle », et bien Catherine en est une vraie ! Quelle personne exceptionnelle ! Grande dévotion à son travail et à faire en sorte que tout le monde soit satisfait/content/heureux !</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Rosalie</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Catherine est tellement minutieuse et attentionnée envers ses clients ce qui fait d'elle la meilleure dans son domaine. Je recommande à tout le monde.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Julien</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Service impeccable ! Catherine est tellement adorable. Je recommande !!</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Annie</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Catherine travail très bien elle est minutieuse et attentionné et à l'écoute des besoins.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Natacha</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Catherine est une personne très minutieuse et très attentionné.</p>
+                </div>
+            </div>
+            <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('avis', 1)">&#8250;</button>
+        </div>
+    </section>
+
+    <!-- Realisations -->
+    <section class="about" id="realisations">
+        <div class="section-head reveal">
+            <span class="eyebrow">Mes réalisations</span>
+            <h2>Un aperçu de <span class="grad-text">mon travail</span></h2>
+            <p>Des résultats qui parlent d'eux-mêmes.</p>
+        </div>
+        <div class="carousel reveal">
+            <button class="cbtn prev" aria-label="Précédent" onclick="scrollCarousel('photos', -1)">&#8249;</button>
+            <div class="track" id="photos">
+                <img src="images/IMG_0191.jpeg" alt="Salle de bain nettoyée" class="pslide">
+                <img src="images/IMG_0192.jpeg" alt="Gros plan bain" class="pslide">
+                <img src="images/IMG_0201.jpeg" alt="Toilette nettoyée" class="pslide">
+                <img src="images/lavabo.jpg" alt="Lavabo nettoyé" class="pslide">
+                <img src="images/cuisine.jpeg" alt="Cuisine nettoyée" class="pslide">
+                <img src="images/fenetre-lit.jpg" alt="Fenêtre et chambre" class="pslide">
+                <img src="images/lit.jpeg" alt="Lit fait" class="pslide">
+            </div>
+            <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('photos', 1)">&#8250;</button>
+        </div>
+    </section>
+
+    <!-- Regions -->
+    <section class="regions" id="regions">
+        <div class="section-head reveal" style="margin-bottom:1rem;">
+            <span class="eyebrow" style="background:rgba(255,255,255,0.15); color:#fff;">📍 Laurentides & Lanaudière</span>
+            <h2>Je dessers fièrement</h2>
+            <p style="color:rgba(255,255,255,0.8);">Mes secteurs desservis dans la région.</p>
+        </div>
+        <div class="region-chips reveal">
+            <span class="chip">Saint-Hippolyte</span>
+            <span class="chip">Saint-Calixte</span>
+            <span class="chip">Chertsey</span>
+            <span class="chip">Sainte-Julienne</span>
+            <span class="chip">Saint-Esprit</span>
+            <span class="chip">Saint-Lin-Laurentides</span>
+            <span class="chip">Sainte-Sophie</span>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info reveal">
+                <span class="eyebrow">Contactez-moi</span>
+                <h2>Demande <span class="grad-text">d'estimation</span></h2>
+                <p>Obtenez une estimation sans frais et sans engagement. Je vous réponds rapidement !</p>
+                <div class="contact-line"><span class="ico">📞</span> (450) 821-8141</div>
+                <div class="contact-line"><span class="ico">✉️</span> entretienmenagervertetnet@gmail.com</div>
+                <div class="contact-line"><span class="ico">📍</span> Laurentides & Lanaudière</div>
+                <div class="contact-line"><span class="ico">👍</span> <a href="https://www.facebook.com/entretienvertetnet" target="_blank" rel="noopener" style="color:var(--green-dark); font-weight:600;">Suivez-moi sur Facebook</a></div>
+            </div>
+            <div class="form-card reveal">
+                <form id="contactForm" action="https://formspree.io/f/xykblvqd" method="POST">
+                    <div class="fg"><label for="nom">Nom</label><input type="text" id="nom" name="nom" required></div>
+                    <div class="fg"><label for="courriel">Courriel</label><input type="email" id="courriel" name="email" required></div>
+                    <div class="fg"><label for="tel">Téléphone</label><input type="tel" id="tel" name="telephone"></div>
+                    <div class="fg"><label for="service">Service souhaité</label>
+                        <select id="service" name="service">
+                            <option value="">Sélectionnez un service</option>
+                            <option>Entretien régulier</option>
+                            <option>Grand ménage</option>
+                            <option>Entretien locatif & Airbnb</option>
+                            <option>Entretien commercial & bureaux</option>
+                        </select>
+                    </div>
+                    <div class="fg"><label for="message">Message</label><textarea id="message" name="message" placeholder="Décrivez vos besoins..."></textarea></div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Envoyer la demande</button>
+                    <p class="form-status" id="formStatus"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="fbrand"><img src="images/IMG_0283.jpeg" alt="Logo"> Entretien ménager Vert & Net</div>
+        <p>Faire briller sans polluer 🌿</p>
+        <div class="fsoc"><a href="https://www.facebook.com/entretienvertetnet" target="_blank" rel="noopener">Facebook</a></div>
+        <small>© 2026 Entretien ménager Vert & Net · Catherine Lessard · Laurentides & Lanaudière</small>
+        <small style="margin-top:0.6rem;">Ceci est un aperçu d'une version moderne proposée — non publié comme site officiel.</small>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Carousel
+        function scrollCarousel(id, dir) {
+            const track = document.getElementById(id);
+            if (!track) return;
+            const first = track.querySelector('*');
+            const gap = parseFloat(getComputedStyle(track).columnGap) || 20;
+            const step = first ? first.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+            track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')));
+
+        // Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this, status = document.getElementById('formStatus');
+            const btn = form.querySelector('button[type="submit"]');
+            btn.textContent = 'Envoi en cours...'; btn.disabled = true;
+            fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+                .then(r => {
+                    if (r.ok) { status.textContent = 'Merci! Votre demande a été envoyée.'; status.style.color = '#2d6a4f'; form.reset(); }
+                    else { status.textContent = 'Une erreur est survenue. Veuillez me téléphoner au (450) 821-8141.'; status.style.color = '#d32f2f'; }
+                    status.style.display = 'block'; btn.textContent = 'Envoyer la demande'; btn.disabled = false;
+                })
+                .catch(() => { status.textContent = 'Une erreur est survenue. Veuillez me téléphoner au (450) 821-8141.'; status.style.color = '#d32f2f'; status.style.display = 'block'; btn.textContent = 'Envoyer la demande'; btn.disabled = false; });
+        });
+    </script>
+</body>
+</html>
