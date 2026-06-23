@@ -1702,12 +1702,8 @@
                         if (!track) return;
                         const items = Array.from(track.children);
                         if (!items.length) return;
-                        const tol = 5;
                         const maxScroll = track.scrollWidth - track.clientWidth;
-                        // Boucle : du dernier on revient au premier (et vice-versa)
-                        if (dir > 0 && track.scrollLeft >= maxScroll - tol) { track.scrollTo({ left: 0, behavior: 'smooth' }); return; }
-                        if (dir < 0 && track.scrollLeft <= tol) { track.scrollTo({ left: maxScroll, behavior: 'smooth' }); return; }
-                        // Trouver l'élément le plus proche du centre, puis centrer le suivant/précédent
+                        // Index de l'élément actuellement centré
                         const center = track.scrollLeft + track.clientWidth / 2;
                         let idx = 0, best = Infinity;
                         items.forEach((it, i) => {
@@ -1715,7 +1711,10 @@
                             const d = Math.abs(c - center);
                             if (d < best) { best = d; idx = i; }
                         });
-                        const target = Math.max(0, Math.min(items.length - 1, idx + dir));
+                        // Boucle infinie : après le dernier on revient au premier (et vice-versa)
+                        let target = idx + dir;
+                        if (target < 0) target = items.length - 1;
+                        if (target > items.length - 1) target = 0;
                         const it = items[target];
                         const left = it.offsetLeft - (track.clientWidth - it.offsetWidth) / 2;
                         track.scrollTo({ left: Math.max(0, Math.min(maxScroll, left)), behavior: 'smooth' });
