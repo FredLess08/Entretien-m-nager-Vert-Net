@@ -91,6 +91,25 @@
             color: var(--green-light);
         }
 
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+        }
+
+        .nav-company-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            line-height: 1.15;
+            white-space: nowrap;
+        }
+
+        .nav-company-name .nb-green {
+            color: var(--green-light);
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
@@ -905,12 +924,13 @@
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #e8e8e8;
-            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            border: 2px solid #e8eee9;
+            border-radius: 14px;
             font-family: 'Poppins', sans-serif;
             font-size: 0.95rem;
-            transition: border-color 0.3s;
+            background: #f6faf8;
+            transition: border-color 0.3s, background 0.3s;
             outline: none;
         }
 
@@ -918,6 +938,7 @@
         .form-group textarea:focus,
         .form-group select:focus {
             border-color: var(--green-light);
+            background: var(--white);
         }
 
         .form-group textarea {
@@ -1074,7 +1095,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo"><img src="images/IMG_0283.jpeg" alt="Logo Entretien Ménager Vert & Net" style="height:36px; vertical-align:middle; border-radius:6px;"></a>
+            <a href="#" class="nav-brand">
+                <img src="images/IMG_0283.jpeg" alt="Logo Entretien ménager Vert & Net" style="height:44px; border-radius:8px;">
+                <span class="nav-company-name">Entretien ménager<br><span class="nb-green">Vert &amp; Net</span></span>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#a-propos">À propos</a></li>
                 <li><a href="#services">Services</a></li>
@@ -1083,7 +1107,6 @@
                 <li><a href="#regions">Régions</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <span class="nav-company-name" style="font-size:0.85rem; font-weight:600; color:var(--green-dark); white-space:nowrap; ">Entretien ménager <span style="color:var(--green-light);">Vert & Net</span></span>
             <div class="nav-toggle" id="navToggle" onclick="document.getElementById('navLinks').classList.toggle('active')">
                 <span></span>
                 <span></span>
@@ -1117,7 +1140,7 @@
                     </span>
                 </div>
                 <div>
-                    <a href="#contact" class="btn btn-primary">Estimation gratuite</a>
+                    <a href="#contact" class="btn btn-primary">Obtenir une estimation gratuite</a>
                     <a href="tel:4508218141" class="btn btn-secondary">(450) 821-8141</a>
                 </div>
             </div>
@@ -1127,7 +1150,7 @@
                     <div class="floating-badge">&#10024; Résultat impeccable</div>
                     <div class="hero-icon">&#127807;</div>
                     <h3>Entretien Ménager<br>Vert & Net</h3>
-                    <p>L'expertise de grade clinique au service de votre propriété</p>
+                    <p>L'expertise de grade clinique au service de vos propriétés et commerces</p>
                 </div>
             </div>
         </div>
@@ -1660,7 +1683,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" placeholder="Décrivez vos besoins..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; background:linear-gradient(120deg, var(--green-dark), var(--green-light)); border:none; padding:1rem;">Envoyer la demande</button>
                     <p id="formStatus" style="text-align:center; margin-top:1rem; font-weight:500; display:none;"></p>
                 </form>
                 <script>
