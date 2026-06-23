@@ -330,6 +330,7 @@
         .rhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; }
         .rname { font-family: 'Sora'; font-weight: 700; font-size: 1.12rem; line-height: 1.2; }
         .rstars { color: #f5a623; letter-spacing: 2px; margin: 0.5rem 0 0.9rem; }
+        .rreco { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--green-pale); color: var(--green-dark); font-size: 0.8rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 50px; margin: 0.5rem 0 0.9rem; width: fit-content; }
         .rtext { color: var(--muted); font-size: 0.93rem; line-height: 1.55; }
 
         .pslide { height: 320px; width: auto; border-radius: 20px; box-shadow: var(--shadow-sm); }
@@ -820,43 +821,41 @@
                 <div class="rcard">
                     <div class="rhead"><span class="rname">Claudel</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span></div>
                     <div class="rstars">★★★★★</div>
-                    <p class="rtext" style="font-style:italic;">A donné une note de 5 étoiles.</p>
                 </div>
                 <div class="rcard">
                     <div class="rhead"><span class="rname">Témoignage<br>d'une cliente</span><span>💬</span></div>
-                    <div class="rstars">★★★★★</div>
                     <p class="rtext">Merci beaucoup Catherine pour votre travail, vous êtes super ! Vous êtes très attentive aux détails et j'aime ça.</p>
                 </div>
                 <div class="rcard">
-                    <div class="rhead"><span class="rname">Marie Lyne</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
-                    <div class="rstars">★★★★★</div>
-                    <p class="rtext">Quand on parle d'une « perle », et bien Catherine en est une vraie ! Quelle personne exceptionnelle ! Grande dévotion à son travail et à faire en sorte que tout le monde soit satisfait/content/heureux !</p>
-                </div>
-                <div class="rcard">
-                    <div class="rhead"><span class="rname">Rosalie</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
-                    <div class="rstars">★★★★★</div>
-                    <p class="rtext">Catherine est tellement minutieuse et attentionnée envers ses clients ce qui fait d'elle la meilleure dans son domaine. Je recommande à tout le monde.</p>
-                </div>
-                <div class="rcard">
                     <div class="rhead"><span class="rname">Julien</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
-                    <div class="rstars">★★★★★</div>
+                    <div class="rreco">👍 Recommande</div>
                     <p class="rtext">Service impeccable ! Catherine est tellement adorable. Je recommande !!</p>
                 </div>
                 <div class="rcard">
+                    <div class="rhead"><span class="rname">Rosalie</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <div class="rreco">👍 Recommande</div>
+                    <p class="rtext">Catherine est tellement minutieuse et attentionnée envers ses clients ce qui fait d'elle la meilleure dans son domaine. Je recommande à tout le monde.</p>
+                </div>
+                <div class="rcard">
                     <div class="rhead"><span class="rname">Annie</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
-                    <div class="rstars">★★★★★</div>
+                    <div class="rreco">👍 Recommande</div>
                     <p class="rtext">Catherine travail très bien elle est minutieuse et attentionné et à l'écoute des besoins.</p>
                 </div>
                 <div class="rcard">
+                    <div class="rhead"><span class="rname">Marie Lyne</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <div class="rreco">👍 Recommande</div>
+                    <p class="rtext">Quand on parle d'une « perle », et bien Catherine en est une vraie ! Quelle personne exceptionnelle ! Grande dévotion à son travail et à faire en sorte que tout le monde soit satisfait/content/heureux !</p>
+                </div>
+                <div class="rcard">
                     <div class="rhead"><span class="rname">Natacha</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
-                    <div class="rstars">★★★★★</div>
+                    <div class="rreco">👍 Recommande</div>
                     <p class="rtext">Catherine est une personne très minutieuse et très attentionné.</p>
                 </div>
             </div>
             <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('avis', 1)">&#8250;</button>
         </div>
         <div style="text-align:center; margin-top:2.5rem;" class="reveal">
-            <p style="color:var(--muted); margin-bottom:1rem;">Vous avez fait affaire avec moi&nbsp;? N'hésitez pas à partager votre expérience&nbsp;!</p>
+            <p style="color:var(--muted); margin-bottom:1rem;">Vous avez aimé mon travail&nbsp;? N'hésitez pas à partager votre expérience&nbsp;!</p>
             <a href="https://www.google.com/search?q=Entretien+m%C3%A9nager+Vert+%26+Net&kgmid=/g/11nbzjp8j8" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem;">⭐ Laisser un avis Google</a>
         </div>
     </section>
@@ -982,10 +981,10 @@
         });
     </script>
 
-    <!-- Bouton flottant Appeler (mobile) -->
-    <a href="tel:4508218141" class="floating-call" aria-label="Appeler Catherine">
-        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        Appeler
+    <!-- Bouton flottant Texto (mobile) -->
+    <a href="sms:+14508218141" class="floating-call" aria-label="Envoyer un texto à Catherine">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+        Texto
     </a>
 </body>
 </html>
