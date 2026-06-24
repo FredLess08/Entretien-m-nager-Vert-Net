@@ -1744,25 +1744,19 @@
                         });
                     });
 
+                    const carouselIndex = {};
                     function scrollCarousel(id, dir) {
                         const track = document.getElementById(id);
                         if (!track) return;
                         const items = Array.from(track.children);
                         if (!items.length) return;
-                        const maxScroll = track.scrollWidth - track.clientWidth;
-                        // Index de l'élément actuellement centré
-                        const center = track.scrollLeft + track.clientWidth / 2;
-                        let idx = 0, best = Infinity;
-                        items.forEach((it, i) => {
-                            const c = it.offsetLeft + it.offsetWidth / 2;
-                            const d = Math.abs(c - center);
-                            if (d < best) { best = d; idx = i; }
-                        });
-                        // Boucle infinie : après le dernier on revient au premier (et vice-versa)
-                        let target = idx + dir;
+                        // Compteur explicite = boucle fiable, peu importe la largeur des photos
+                        let target = (carouselIndex[id] || 0) + dir;
                         if (target < 0) target = items.length - 1;
                         if (target > items.length - 1) target = 0;
+                        carouselIndex[id] = target;
                         const it = items[target];
+                        const maxScroll = track.scrollWidth - track.clientWidth;
                         const left = it.offsetLeft - (track.clientWidth - it.offsetWidth) / 2;
                         track.scrollTo({ left: Math.max(0, Math.min(maxScroll, left)), behavior: 'smooth' });
                     }
