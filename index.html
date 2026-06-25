@@ -226,6 +226,9 @@
         .cred-ico { width: 50px; height: 50px; flex: 0 0 auto; border-radius: 15px; background: #fff; display: grid; place-items: center; font-size: 1.4rem; box-shadow: var(--shadow-sm); }
         .cred-row b { font-family: 'Sora', sans-serif; display: block; font-size: 1rem; }
         .cred-row span { font-size: 0.85rem; color: var(--muted); }
+        .about-checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+        .about-checks li { position: relative; padding-left: 2.1rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+        .about-checks li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 1.5rem; height: 1.5rem; background: var(--green-mid); color: #fff; border-radius: 50%; display: grid; place-items: center; font-size: 0.85rem; font-weight: 700; }
 
         /* CTA band */
         .cta-band { background: linear-gradient(135deg, var(--green-dark), var(--green-bright)); text-align: center; }
@@ -470,10 +473,15 @@
                 <p>Avec mes 7 ans d'expérience en protocoles de désinfection, de stérilisation et de biosécurité en milieux critiques (santé, vétérinaire et animalier), je mets désormais cette expertise au service de vos propriétés et commerces dans les Laurentides et Lanaudière.</p>
             </div>
             <aside class="cred-card reveal">
-                <div class="cred-row"><span class="cred-ico">🔬</span><div><b>Formation clinique</b><span>Milieux santé, vétérinaire & animalier</span></div></div>
-                <div class="cred-row"><span class="cred-ico">🛡️</span><div><b>Assurance 1 M$</b><span>Responsabilité civile</span></div></div>
-                <div class="cred-row"><span class="cred-ico">🌿</span><div><b>100 % écologique</b><span>Produits québécois & biodégradables</span></div></div>
-                <div class="cred-row"><span class="cred-ico">🧾</span><div><b>Facturation en règle</b><span>Reçus et factures officiels</span></div></div>
+                <ul class="about-checks">
+                    <li>Produits québécois et écoresponsables</li>
+                    <li>Formules véganes et sans cruauté</li>
+                    <li>Sécuritaires pour les enfants et les animaux</li>
+                    <li>Service à la carte pour vos besoins spécifiques</li>
+                    <li>Disponible 24/7 pour les urgences locatives</li>
+                    <li>Assurance responsabilité (1&nbsp;M$)</li>
+                    <li>Facturation en règle et estimation gratuite</li>
+                </ul>
             </aside>
         </div>
     </section>
@@ -747,7 +755,7 @@
     <section class="why" id="pourquoi">
         <div class="section-head reveal">
             <span class="eyebrow">Pourquoi me choisir</span>
-            <h2>La différence <span class="grad-text">Vert & Net</span></h2>
+            <h2>Ce qui fait la <span class="grad-text">différence</span></h2>
             <p>Six bonnes raisons de me confier votre espace, en toute confiance.</p>
         </div>
         <div class="why-grid">
