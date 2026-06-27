@@ -230,16 +230,6 @@
         .about-checks li { position: relative; padding-left: 2.1rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
         .about-checks li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 1.5rem; height: 1.5rem; background: var(--green-mid); color: #fff; border-radius: 50%; display: grid; place-items: center; font-size: 0.85rem; font-weight: 700; }
 
-        /* CTA band */
-        .cta-band { background: linear-gradient(135deg, var(--green-dark), var(--green-bright)); text-align: center; }
-        .cta-inner { max-width: 720px; margin: 0 auto; }
-        .cta-inner h2 { color: #fff; font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.8rem; }
-        .cta-inner p { color: rgba(255,255,255,0.92); margin-bottom: 2rem; font-size: 1.1rem; }
-        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-light { background: #fff; color: var(--green-dark); box-shadow: 0 10px 24px rgba(0,0,0,0.15); }
-        .btn-light:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(0,0,0,0.22); }
-        .btn-outline-light { background: rgba(255,255,255,0.14); color: #fff; border: 1.5px solid rgba(255,255,255,0.6); }
-        .btn-outline-light:hover { background: rgba(255,255,255,0.24); transform: translateY(-3px); }
 
         /* Services */
         .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
@@ -380,6 +370,27 @@
         .fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--green-bright); background: #fff; }
         .fg textarea { resize: vertical; min-height: 100px; }
         .form-status { display: none; margin-top: 0.8rem; font-weight: 600; }
+
+        /* Contact (version classique restaurée) */
+        .contact { background: var(--bg-soft); }
+        .contact-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contact-info h2 { font-size: clamp(1.9rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; color: var(--ink); line-height: 1.15; margin: 1rem 0 0; }
+        .contact-info > p { color: var(--muted); font-size: 1.02rem; margin: 0; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #fff; border-radius: 14px; box-shadow: var(--shadow-sm); }
+        .contact-icon { width: 48px; height: 48px; background: var(--green-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .contact-item-text { display: flex; flex-direction: column; }
+        .contact-item-text small { color: var(--muted); font-size: 0.8rem; }
+        .contact-item-text a { color: var(--ink); font-weight: 600; text-decoration: none; font-size: 1.02rem; }
+        .contact-item-text a:hover { color: var(--green-mid); }
+        .contact-form { background: #fff; border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow); }
+        .contact-form h3 { color: var(--ink); margin-bottom: 1.5rem; font-size: 1.3rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem; color: var(--ink); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.85rem 1rem; border: 2px solid #e8eee9; border-radius: 14px; font-family: 'Inter', sans-serif; font-size: 0.95rem; background: var(--bg-soft); transition: border-color 0.3s, background 0.3s; outline: none; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--green-bright); background: #fff; }
+        .form-group textarea { height: 100px; resize: vertical; }
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
 
         /* Footer */
         footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 6% 2rem; text-align: center; }
@@ -863,47 +874,67 @@
         </div>
     </section>
 
-    <!-- CTA band -->
-    <section class="cta-band">
-        <div class="cta-inner reveal">
-            <h2>Envie de faire briller votre espace ?</h2>
-            <p>Recevez une estimation gratuite et sans engagement, adaptée à vos besoins.</p>
-            <div class="cta-actions">
-                <a href="#contact" class="btn btn-light">Demander mon estimation</a>
-                <a href="tel:4508218141" class="btn btn-outline-light">📞 (450) 821-8141</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact -->
-    <section id="contact">
-        <div class="contact-wrap">
+    <section class="contact" id="contact">
+        <div class="contact-grid">
             <div class="contact-info reveal">
                 <span class="eyebrow">Contactez-moi</span>
-                <h2>Parlons de <span class="grad-text">votre projet</span></h2>
-                <p>Remplissez le formulaire ci-dessous et je vous reviens rapidement, avec plaisir !</p>
-                <div class="contact-line"><span class="ico">📞</span> (450) 821-8141</div>
-                <div class="contact-line"><span class="ico">✉️</span> entretienmenagervertetnet@gmail.com</div>
-                <div class="contact-line"><span class="ico">📍</span> Laurentides & Lanaudière</div>
-                <div class="contact-line"><span class="ico">👍</span> <a href="https://www.facebook.com/entretienvertetnet" target="_blank" rel="noopener" style="color:var(--green-dark); font-weight:600;">Suivez-moi sur Facebook</a></div>
+                <h2>Demandez votre estimation gratuite</h2>
+                <p>N'hésitez pas à me contacter pour obtenir une estimation sans frais. Il me fera plaisir de répondre à toutes vos questions&nbsp;!</p>
+                <div class="contact-item">
+                    <div class="contact-icon">&#128222;</div>
+                    <div class="contact-item-text">
+                        <small>Téléphone</small>
+                        <a href="tel:4508218141">(450) 821-8141</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">&#9993;</div>
+                    <div class="contact-item-text">
+                        <small>Courriel</small>
+                        <a href="mailto:entretienmenagervertetnet@gmail.com">entretienmenagervertetnet@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="#40916c"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                    <div class="contact-item-text">
+                        <small>Facebook</small>
+                        <a href="https://www.facebook.com/entretienvertetnet" target="_blank" rel="noopener">Entretien ménager Vert & Net</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-card reveal">
+            <div class="contact-form reveal">
+                <h3>Estimation gratuite</h3>
                 <form id="contactForm" action="https://formspree.io/f/xykblvqd" method="POST">
-                    <div class="fg"><label for="nom">Nom</label><input type="text" id="nom" name="nom" required></div>
-                    <div class="fg"><label for="courriel">Courriel</label><input type="email" id="courriel" name="email" required></div>
-                    <div class="fg"><label for="tel">Téléphone</label><input type="tel" id="tel" name="telephone"></div>
-                    <div class="fg"><label for="service">Service souhaité</label>
+                    <input type="hidden" name="_subject" value="Nouvelle demande d'estimation - Vert & Net">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Courriel</label>
+                        <input type="email" id="email" name="email" required placeholder="votre@courriel.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(450) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Type de service</label>
                         <select id="service" name="service">
                             <option value="">Sélectionnez un service</option>
-                            <option>Entretien régulier</option>
-                            <option>Grand ménage</option>
-                            <option>Entretien locatif & Airbnb</option>
-                            <option>Entretien commercial & bureaux</option>
+                            <option value="Entretien régulier">Entretien régulier</option>
+                            <option value="Grand ménage">Grand ménage</option>
+                            <option value="Entretien locatif & Airbnb">Entretien locatif & Airbnb</option>
+                            <option value="Entretien commercial & bureaux">Entretien commercial & bureaux</option>
                         </select>
                     </div>
-                    <div class="fg"><label for="message">Message</label><textarea id="message" name="message" placeholder="Décrivez vos besoins..."></textarea></div>
-                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Envoyer la demande</button>
-                    <p class="form-status" id="formStatus"></p>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Décrivez vos besoins..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; background:linear-gradient(120deg, var(--green-dark), var(--green-light)); border:none; padding:1rem;">Envoyer la demande</button>
+                    <p id="formStatus" style="text-align:center; margin-top:1rem; font-weight:500; display:none;"></p>
                 </form>
             </div>
         </div>
