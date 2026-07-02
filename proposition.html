@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposition de design — Entretien Ménager Vert & Net</title>
+    <meta name="description" content="Aperçu de design proposé pour Entretien ménager Vert & Net.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Entretien ménager Vert & Net">
+    <meta property="og:description" content="Ménage écologique de grade clinique dans les Laurentides et Lanaudière. Sécuritaire pour les enfants et les animaux. Estimation gratuite!">
+    <meta property="og:image" content="https://entretienvertetnet.ca/images/IMG_0283.jpeg">
+    <meta property="og:url" content="https://entretienvertetnet.ca">
+    <meta property="og:locale" content="fr_CA">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-darkest: #1b4332;
+            --green-dark: #2d6a4f;
+            --green-mid: #40916c;
+            --green-bright: #52b788;
+            --green-light: #95d5b2;
+            --green-pale: #d8f3dc;
+            --ink: #14211c;
+            --muted: #5f6f68;
+            --bg: #ffffff;
+            --bg-soft: #f6faf8;
+            --white: #ffffff;
+            --line: rgba(27, 67, 50, 0.09);
+            --shadow: 0 24px 60px -18px rgba(27, 67, 50, 0.18);
+            --shadow-sm: 0 12px 32px -14px rgba(27, 67, 50, 0.16);
+            --radius: 24px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, .display { font-family: 'Sora', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        section { padding: 6rem 6%; position: relative; }
+        [id] { scroll-margin-top: 86px; }
+        ::selection { background: var(--green-pale); color: var(--green-darkest); }
+        a:focus-visible, button:focus-visible, summary:focus-visible,
+        input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--green-bright);
+            outline-offset: 2px;
+        }
+        .alt { background: var(--bg-soft); }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green-pale);
+            color: var(--green-dark);
+            font-weight: 700;
+            font-size: 0.74rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.45rem 1rem;
+            border-radius: 50px;
+        }
+        .section-head { text-align: center; max-width: 680px; margin: 0 auto 3.5rem; }
+        .section-head h2 {
+            font-size: clamp(2rem, 4vw, 2.9rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin: 1.2rem 0 0.8rem;
+            line-height: 1.1;
+        }
+        .section-head p { color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+        .grad-text {
+            background: linear-gradient(120deg, var(--green-mid), var(--green-bright));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.9rem;
+            border-radius: 50px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+        }
+        .btn-primary {
+            background: linear-gradient(120deg, var(--green-dark), var(--green-mid));
+            color: #fff;
+            box-shadow: 0 14px 30px -10px rgba(45, 106, 79, 0.5);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 38px -10px rgba(45, 106, 79, 0.55); }
+        .btn-ghost {
+            background: rgba(255,255,255,0.7);
+            color: var(--green-dark);
+            border: 1.5px solid var(--green-light);
+            backdrop-filter: blur(8px);
+        }
+        .btn-ghost:hover { background: #fff; border-color: var(--green-mid); transform: translateY(-3px); }
+
+
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 6%;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--line);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 10px 30px -14px rgba(27,67,50,0.18); }
+        .nav-brand { display: flex; align-items: center; gap: 0.7rem; font-family: 'Sora', sans-serif; font-weight: 700; }
+        .nav-brand img { width: 40px; height: 40px; border-radius: 11px; object-fit: cover; }
+        .nav-brand span { font-size: 1rem; line-height: 1.1; }
+        .nav-brand b { color: var(--green-mid); }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--green-dark); }
+        .nav-cta { background: var(--ink); color: #fff; padding: 0.7rem 1.4rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s; }
+        .nav-cta:hover { transform: translateY(-2px); }
+        .nav-toggle { display: none; font-size: 1.6rem; background: none; border: none; cursor: pointer; color: var(--green-dark); }
+
+        /* Hero */
+        .hero {
+            padding: 5.5rem 6% 6.5rem;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            background:
+                radial-gradient(900px 420px at 88% -12%, rgba(82,183,136,0.14), transparent 60%),
+                radial-gradient(700px 420px at -8% 34%, rgba(149,213,178,0.16), transparent 55%);
+        }
+        .hero-text { position: relative; z-index: 2; }
+        .hero-text h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.03;
+            letter-spacing: -0.035em;
+            margin: 1.5rem 0 1.3rem;
+        }
+        .hero-text p.lead { font-size: 1.15rem; color: var(--muted); max-width: 500px; line-height: 1.7; margin-bottom: 2.2rem; }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .hero-mini { display: flex; gap: 2.4rem; margin-top: 2.8rem; flex-wrap: wrap; }
+        .hero-mini > div { position: relative; }
+        .hero-mini > div + div::before { content: ''; position: absolute; left: -1.2rem; top: 15%; height: 70%; width: 1px; background: var(--line); }
+        .hero-mini b { font-family: 'Sora'; font-size: 1.45rem; color: var(--green-dark); display: block; line-height: 1.25; }
+        .hero-mini span { font-size: 0.82rem; color: var(--muted); }
+
+        .hero-visual { position: relative; z-index: 2; }
+        .hero-photo {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            aspect-ratio: 4/5;
+            position: relative;
+        }
+        .hero-photo::after { content: ''; position: absolute; inset: 0; border-radius: 30px; border: 1px solid rgba(255,255,255,0.35); pointer-events: none; }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* About */
+        .about { background: var(--bg-soft); }
+        .about-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 720px; margin: 0 auto; }
+        .about-story { border-left: 3px solid var(--green-bright); padding-left: 1.7rem; }
+        .lead-quote { font-family: 'Sora', sans-serif; font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; line-height: 1.4; color: var(--ink); margin-bottom: 1.4rem; }
+        .about-story p { color: var(--muted); margin-bottom: 1rem; line-height: 1.75; }
+        .signature { font-family: 'Sora', sans-serif; color: var(--green-dark); font-weight: 600; margin-top: 0.4rem; font-size: 1.05rem; }
+
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .svc {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 2.1rem 1.6rem;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .svc:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); border-color: var(--green-light); }
+        .svc-ico {
+            width: 60px; height: 60px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--green-pale), var(--green-light));
+            display: grid; place-items: center;
+            font-size: 1.6rem;
+            margin: 0 auto 1.2rem;
+        }
+        .svc h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .svc p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+        .svc details { margin-top: 1.2rem; }
+        .svc summary {
+            cursor: pointer; list-style: none;
+            font-weight: 600; font-size: 0.85rem; color: var(--green-dark);
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            background: var(--green-pale);
+            padding: 0.55rem 1.15rem;
+            border-radius: 50px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .svc summary:hover { background: var(--green-light); }
+        .svc details[open] summary { background: var(--green-dark); color: #fff; }
+        .svc summary::-webkit-details-marker { display: none; }
+        .svc summary::after { content: '→'; transition: transform 0.2s; }
+        .svc details[open] summary::after { transform: rotate(90deg); }
+        .plan {
+            margin-top: 1.2rem; font-size: 0.85rem; text-align: left;
+            max-height: 420px; overflow-y: auto; padding-right: 0.6rem;
+            scrollbar-width: thin; scrollbar-color: var(--green-light) transparent;
+        }
+        .plan::-webkit-scrollbar { width: 5px; }
+        .plan::-webkit-scrollbar-thumb { background: var(--green-light); border-radius: 10px; }
+        .plan h5 { font-family: 'Sora', sans-serif; font-size: 0.9rem; color: var(--green-dark); margin: 1rem 0 0.4rem; }
+        .plan h5:first-child { margin-top: 0; }
+        .plan h5.extras { color: var(--green-mid); }
+        .plan ul { list-style: none; padding: 0; margin: 0 0 0.5rem; }
+        .plan li { padding: 0.22rem 0 0.22rem 1.1rem; position: relative; color: var(--ink); font-weight: 600; }
+        .plan li::before { content: '•'; position: absolute; left: 0; color: var(--green-bright); font-weight: 700; }
+        .plan li strong { font-weight: 600; }
+        .plan li .desc { display: block; color: var(--muted); font-size: 0.78rem; font-weight: 400; }
+        .plan .plan-note { font-style: italic; color: var(--muted); font-size: 0.78rem; margin-top: 0.4rem; }
+
+        /* Why */
+        .why { background: var(--bg-soft); }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; max-width: 1100px; margin: 0 auto; }
+        .feature { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.9rem 1.6rem; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; text-align: center; }
+        .feature:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); border-color: var(--green-light); }
+        .feature .ico { width: 54px; height: 54px; border-radius: 16px; background: var(--green-pale); display: grid; place-items: center; font-size: 1.3rem; margin: 0 auto 1rem; }
+        .feature h4 { font-size: 1.05rem; margin-bottom: 0.45rem; }
+        .feature p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+
+        /* Carousel */
+        .carousel { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 3.4rem; }
+        .track { display: flex; gap: 1.3rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0.3rem 1rem; scrollbar-width: none; }
+        .track::-webkit-scrollbar { display: none; }
+        .track > * { flex: 0 0 auto; scroll-snap-align: center; }
+        .cbtn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 46px; height: 46px; border-radius: 50%;
+            background: #fff; border: 1px solid var(--line);
+            color: var(--green-dark); font-size: 1.35rem; cursor: pointer; z-index: 3;
+            display: grid; place-items: center;
+            box-shadow: var(--shadow-sm);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .cbtn:hover { background: var(--green-dark); color: #fff; transform: translateY(-50%) scale(1.06); }
+        .cbtn.prev { left: 0; }
+        .cbtn.next { right: 0; }
+
+        .rcard {
+            width: 320px; min-height: 250px;
+            background: #fff; border-radius: 20px;
+            padding: 1.7rem 1.6rem;
+            display: flex; flex-direction: column;
+            border: 1px solid var(--line);
+        }
+        .rhead { display: flex; align-items: center; gap: 0.8rem; }
+        .rhead > span:last-child { margin-left: auto; }
+        .ravatar {
+            width: 42px; height: 42px; border-radius: 50%; flex: 0 0 auto;
+            background: linear-gradient(135deg, var(--green-mid), var(--green-bright));
+            color: #fff; display: grid; place-items: center;
+            font-family: 'Sora'; font-weight: 700; font-size: 1.05rem;
+        }
+        .rname { font-family: 'Sora'; font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
+        .rstars { color: #f5a623; letter-spacing: 2px; margin: 0.6rem 0 0.9rem; }
+        .rreco { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--green-pale); color: var(--green-dark); font-size: 0.8rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 50px; margin: 0.5rem 0 0.9rem; width: fit-content; }
+        .rtext { color: var(--muted); font-size: 0.93rem; line-height: 1.6; margin-top: 0.6rem; }
+        .rstars + .rtext { margin-top: 0; }
+
+        .pslide { height: 320px; width: auto; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+
+        /* Bouton flottant Appeler (mobile) */
+        .floating-call {
+            position: fixed;
+            bottom: calc(18px + env(safe-area-inset-bottom));
+            right: 16px;
+            z-index: 300;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green-dark);
+            color: #fff;
+            padding: 0.85rem 1.3rem;
+            border-radius: 50px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(45, 106, 79, 0.5);
+        }
+        .floating-call svg { width: 20px; height: 20px; fill: currentColor; }
+        @media (max-width: 768px) { .floating-call { display: inline-flex; } }
+
+        /* Regions */
+        .regions { background: linear-gradient(135deg, var(--green-darkest), var(--green-mid)); color: #fff; text-align: center; }
+        .regions h2 { color: #fff; }
+        .region-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; max-width: 760px; margin: 2rem auto 0; }
+        .chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22); padding: 0.6rem 1.2rem; border-radius: 50px; font-weight: 500; font-size: 0.92rem; backdrop-filter: blur(6px); transition: background 0.2s; }
+        .chip:hover { background: rgba(255,255,255,0.2); }
+
+        /* Contact */
+        .contact { background: var(--bg-soft); }
+        .contact-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .contact-info { display: flex; flex-direction: column; gap: 1.4rem; }
+        .contact-info h2 { font-size: clamp(1.9rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.025em; color: var(--ink); line-height: 1.15; margin: 1rem 0 0; }
+        .contact-info > p { color: var(--muted); font-size: 1.02rem; line-height: 1.7; margin: 0; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem; background: #fff; border: 1px solid var(--line); border-radius: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
+        .contact-item:hover { border-color: var(--green-light); box-shadow: var(--shadow-sm); }
+        .contact-icon { width: 48px; height: 48px; background: var(--green-pale); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .contact-item-text { display: flex; flex-direction: column; min-width: 0; }
+        .contact-item-text small { color: var(--muted); font-size: 0.8rem; }
+        .contact-item-text a { color: var(--ink); font-weight: 600; text-decoration: none; font-size: 1rem; overflow-wrap: anywhere; }
+        .contact-item-text a:hover { color: var(--green-mid); }
+        .contact-form { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow); }
+        .contact-form h3 { color: var(--ink); margin-bottom: 1.5rem; font-size: 1.3rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.88rem; color: var(--ink); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.85rem 1rem; border: 1.5px solid #e3ece7; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.95rem; background: var(--bg-soft); transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; outline: none; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--green-bright); background: #fff; box-shadow: 0 0 0 4px rgba(82,183,136,0.14); }
+        .form-group textarea { height: 100px; resize: vertical; }
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+        /* Footer */
+        footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3.5rem 6% 2rem; text-align: center; }
+        footer .fbrand { display: inline-flex; align-items: center; gap: 0.7rem; color: #fff; font-family: 'Sora'; font-weight: 700; margin-bottom: 0.8rem; }
+        footer .fbrand img { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; }
+        footer .fslogan { font-family: 'Sora', sans-serif; color: var(--green-light); font-size: 0.95rem; margin: 0.2rem 0 0; }
+        footer .fsoc { margin: 1.2rem 0; }
+        footer .fsoc a { color: var(--green-light); font-weight: 600; }
+        footer .fsoc a:hover { color: #fff; }
+        footer small { display: block; margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+
+        /* Reveal animation */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* Responsive */
+        @media (max-width: 980px) {
+            .hero { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-text p.lead { margin-left: auto; margin-right: auto; }
+            .hero-actions, .hero-mini { justify-content: center; }
+            .hero-visual { max-width: 420px; margin: 0 auto; }
+            .about-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            nav.open .nav-links {
+                display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+                background: #fff; padding: 1.5rem 6%; gap: 1.2rem; box-shadow: var(--shadow); border-top: 1px solid var(--line);
+            }
+        }
+        @media (max-width: 640px) {
+            .why-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+        }
+        @media (max-width: 560px) {
+            section { padding: 4rem 6%; }
+            .services-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .hero-mini { gap: 1.6rem; }
+            .hero-mini > div + div::before { left: -0.8rem; }
+            .about-story { padding-left: 1.2rem; }
+            .carousel { padding: 0 2.4rem; }
+            .rcard { width: 275px; }
+            .pslide { height: 370px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <a href="#accueil" class="nav-brand">
+            <img src="images/IMG_0283.jpeg" alt="Logo Vert & Net">
+            <span>Entretien ménager<br><b>Vert & Net</b></span>
+        </a>
+        <div class="nav-links">
+            <a href="#a-propos">À propos</a>
+            <a href="#services">Services</a>
+            <a href="#temoignages">Avis</a>
+            <a href="#realisations">Réalisations</a>
+            <a href="#contact" class="nav-cta">Estimation gratuite</a>
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="accueil">
+        <div class="hero-text reveal">
+            <span class="eyebrow">🌿 Services de nettoyage</span>
+            <h1>Faire briller <span class="grad-text">sans polluer</span></h1>
+            <p class="lead">Entretien ménager écologique sécuritaire pour les enfants et les animaux. Biodégradable pour les fosses septiques.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Obtenir une estimation gratuite</a>
+                <a href="tel:4508218141" class="btn btn-ghost">📞 (450) 821-8141</a>
+            </div>
+            <div class="hero-mini">
+                <div><b>7 ans</b><span>d'expertise clinique</span></div>
+                <div><b>100 %</b><span>produits écologiques</span></div>
+                <div><b>1 M$</b><span>assurance responsabilité</span></div>
+            </div>
+        </div>
+        <div class="hero-visual reveal">
+            <div class="hero-photo">
+                <img src="images/Image 1.jpeg" alt="Catherine Lessard, propriétaire">
+            </div>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section class="about" id="a-propos">
+        <div class="section-head reveal">
+            <span class="eyebrow">À propos</span>
+            <h2>Catherine Lessard, <span class="grad-text">propriétaire</span></h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-story reveal">
+                <p class="lead-quote">« Faire briller sans polluer », c'est plus qu'un slogan — c'est ma façon de travailler.</p>
+                <p style="font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Bonjour à tous&nbsp;!</p>
+                <p>Avec mes 7 ans d'expérience en protocoles de désinfection, de stérilisation et de biosécurité en milieux critiques (santé, vétérinaire et animalier), je mets désormais cette expertise au service de vos propriétés et commerces dans les Laurentides et Lanaudière.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="section-head reveal">
+            <span class="eyebrow">Mes services</span>
+            <h2>Des solutions pour <span class="grad-text">chaque besoin</span></h2>
+            <p>Que ce soit pour vos espaces résidentiels, locatifs (Airbnb) ou commerciaux, j'ai le service qu'il vous faut.</p>
+        </div>
+        <div class="services-grid">
+            <div class="svc reveal">
+                <div class="svc-ico">🏠</div>
+                <h3>Entretien régulier</h3>
+                <p>Le maintien d'une maison saine, semaine après semaine. Un service adapté à vos besoins spécifiques.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Chargement & démarrage (si vide)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Table</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Douche</strong></li>
+                            <li><strong>Baignoire</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilette</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛋 Chambre(s), salon(s) & aires de séjour</h5>
+                        <ul>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes & poignées</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Rebords</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Lits</strong><span class="desc">Les faire</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5 class="extras">➕ Besoins spécifiques <em style="font-weight:400; font-size:0.82rem;">(Extras $ + taxes)</em></h5>
+                        <ul>
+                            <li><strong>Literie</strong><span class="desc">Changement</span></li>
+                            <li><strong>Lessive</strong><span class="desc">Lavage, séchage & pliage (sur place)</span></li>
+                            <li><strong>Vaisselle</strong><span class="desc">Gestion</span></li>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoire(s) & placard(s)</strong><span class="desc">Intérieur (si vide(s))</span></li>
+                            <li><strong>Électroménager(s)</strong><span class="desc">Intérieur</span></li>
+                            <li><strong>Vitre(s) intérieure(s) & cadrage(s)</strong><span class="desc">Moustiquaire(s) inclus (si amovible(s) de l'intérieur)</span></li>
+                            <li><strong>Portes-patio, moustiquaire(s) & rails</strong><span class="desc">Intérieur & extérieur (sauf l'hiver)</span></li>
+                            <li><strong>Murs & plafonds</strong><span class="desc">Lavage complet (hauteur maximale de 10′)</span></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            <div class="svc reveal">
+                <div class="svc-ico">💎</div>
+                <h3>Grand ménage</h3>
+                <p>Un nettoyage en profondeur pour redonner un éclat neuf à votre foyer. Idéal pour les changements de saison ou un emménagement.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Façades & intérieurs (si vides)</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Détartrage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Chargement & démarrage (si vide)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Intérieur & extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Table</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Intérieur & extérieur (si vides)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Détartrage & désinfection</span></li>
+                            <li><strong>Douche</strong></li>
+                            <li><strong>Baignoire</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilette</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛋 Chambre(s), salon(s) & aires de séjour</h5>
+                        <ul>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoires & placards</strong><span class="desc">Intérieurs (si vides)</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes, poignées & cadrages</strong></li>
+                            <li><strong>Moulures</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Vitres intérieures, cadrages & rebords. Moustiquaires inclus (si amovibles de l'intérieur)</span></li>
+                            <li><strong>Portes-patio, moustiquaire(s) & rails</strong><span class="desc">Intérieur & extérieur (sauf l'hiver)</span></li>
+                            <li><strong>Murs & plafonds</strong><span class="desc">Lavage complet (hauteur maximale de 10′)</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong></li>
+                            <li><strong>Laveuse & sécheuse</strong><span class="desc">Intérieur, extérieur & filtre de la sécheuse</span></li>
+                            <li><strong>Literie</strong><span class="desc">Changement</span></li>
+                            <li><strong>Lits</strong><span class="desc">Les faire</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5 class="extras">➕ Besoins spécifiques <em style="font-weight:400; font-size:0.82rem;">(Extras $ + taxes)</em></h5>
+                        <ul>
+                            <li><strong>Vaisselle</strong><span class="desc">Gestion</span></li>
+                            <li><strong>Lessive</strong><span class="desc">Lavage, séchage & pliage (sur place)</span></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            <div class="svc reveal">
+                <div class="svc-ico">🔑</div>
+                <h3>Entretien locatif & Airbnb</h3>
+                <p>Une expérience 5 étoiles pour vos voyageurs. Gestion clé en main pour votre propriété ou votre chalet.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Façades & intérieurs</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Démarrage, déchargement & rangement</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Intérieur & extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Table</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Façades & intérieur</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Douche</strong></li>
+                            <li><strong>Baignoire</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilette</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛋 Chambre(s), salon(s), aires de séjour & autres</h5>
+                        <ul>
+                            <li><strong>Inspection exhaustive</strong></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoires & placards</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes, poignées & cadrages</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Vitres intérieures, cadrages & rebords</span></li>
+                            <li><strong>Portes-patio, moustiquaire(s) & rails</strong><span class="desc">Intérieur & extérieur (sauf l'hiver)</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong></li>
+                            <li><strong>Literie & serviettes</strong><span class="desc">Gestion de la lessive et mise en place</span></li>
+                            <li><strong>Lits</strong><span class="desc">Les faire</span></li>
+                            <li><strong>Laveuse & sécheuse</strong><span class="desc">Intérieur, extérieur & filtre de la sécheuse</span></li>
+                            <li><strong>Consommables</strong><span class="desc">Gestion & remplissage (papier hygiénique, essuie-tout, savons, sacs de poubelle, etc.)<br><em>⚠️ Produits non fournis</em></span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                            <li><strong>🔥 BBQ</strong><span class="desc">Essuyage extérieur, brossage des grilles, vidange du tiroir à graisses, vérification & changement de la bonbonne de propane (si fournie)</span></li>
+                        </ul>
+                        <h5 class="extras">💧 Option SPA</h5>
+                        <ul>
+                            <li><strong>Entretien de base</strong><span class="desc">Filtre, ajout de chlore, ligne d'eau, appuie-têtes, couvercle (intérieur & extérieur) & appoint d'eau<br><em>⚠️ Produits non fournis</em></span></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            <div class="svc reveal">
+                <div class="svc-ico">🏢</div>
+                <h3>Entretien commercial & bureaux</h3>
+                <p>Un entretien complet de vos espaces de travail pour un environnement propre, sain et accueillant, autant pour vos employés que pour votre clientèle.</p>
+                <details>
+                    <summary>Voir le plan de travail</summary>
+                    <div class="plan">
+                        <h5>🍽 Cuisine & salle à manger</h5>
+                        <ul>
+                            <li><strong>Armoires, tablettes & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Comptoirs & dosserets</strong></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Lave-vaisselle</strong><span class="desc">Chargement & démarrage (si vide)</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Petits électroménagers</strong><span class="desc">Grille-pain, micro-ondes, cafetière, etc.</span></li>
+                            <li><strong>Hotte de cuisine</strong><span class="desc">Dégraissage extérieur</span></li>
+                            <li><strong>Appareils électroménagers</strong><span class="desc">Extérieur (réfrigérateur, cuisinière, four, micro-ondes, lave-vaisselle, etc.)</span></li>
+                            <li><strong>Tables</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Bac de recyclage</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛁 Salle de bain(s)</h5>
+                        <ul>
+                            <li><strong>Miroirs, céramique & surfaces chromées</strong></li>
+                            <li><strong>Armoires, étagères, tablettes, comptoirs & tiroirs</strong><span class="desc">Époussetage & façades</span></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Robinetterie & évier</strong><span class="desc">Nettoyage & désinfection</span></li>
+                            <li><strong>Douches</strong></li>
+                            <li><strong>Serviettes</strong><span class="desc">Changement (si fournies)</span></li>
+                            <li><strong>Toilettes</strong><span class="desc">Intérieur & extérieur</span></li>
+                            <li><strong>Poubelle</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5>🛋 Bureaux, salle d'attente, salle de conférence & aire(s) commune(s)</h5>
+                        <ul>
+                            <li><strong>Tables</strong></li>
+                            <li><strong>Chaises</strong></li>
+                            <li><strong>Fauteuils</strong></li>
+                            <li><strong>Toutes les surfaces</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Miroirs, cadres & objets décoratifs</strong></li>
+                            <li><strong>Interrupteurs & thermostats</strong></li>
+                            <li><strong>Portes & poignées</strong></li>
+                            <li><strong>Fenêtres</strong><span class="desc">Rebords</span></li>
+                            <li><strong>Grilles de ventilation</strong><span class="desc">Époussetage (si accessibles)</span></li>
+                            <li><strong>Calorifères & plinthes</strong><span class="desc">Époussetage</span></li>
+                            <li><strong>Consommables</strong><span class="desc">Gestion & remplissage (papier hygiénique, papier brun, savons, sacs de poubelle, etc.)<br><em>⚠️ Produits non fournis</em></span></li>
+                            <li><strong>Poubelles</strong></li>
+                            <li><strong>Sols</strong><span class="desc">Aspirateur & lavage</span></li>
+                        </ul>
+                        <h5 class="extras">➕ Besoins spécifiques <em style="font-weight:400; font-size:0.82rem;">(Extras $ + taxes)</em></h5>
+                        <ul>
+                            <li><strong>Surfaces hautes</strong><span class="desc">Luminaires, dessus des meubles & tablettes</span></li>
+                            <li><strong>Armoire(s) & placard(s)</strong><span class="desc">Intérieur (si vide(s))</span></li>
+                            <li><strong>Électroménager(s)</strong><span class="desc">Intérieur</span></li>
+                            <li><strong>Vitre(s) intérieure(s) & cadrage(s)</strong><span class="desc">Moustiquaire(s) inclus (si amovible(s) de l'intérieur)</span></li>
+                            <li><strong>Murs & plafonds</strong><span class="desc">Lavage complet (hauteur maximale de 10′)</span></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why -->
+    <section class="why" id="pourquoi">
+        <div class="section-head reveal">
+            <span class="eyebrow">Pourquoi me choisir</span>
+            <h2>Ce qui fait la <span class="grad-text">différence</span></h2>
+            <p>Une rigueur clinique alliée à un service professionnel, assuré et écoresponsable. Profitez d'une tranquillité d'esprit totale pour votre foyer, votre propriété locative ou votre commerce.</p>
+        </div>
+        <div class="why-grid">
+            <div class="feature reveal"><div class="ico">🩺✨</div><h4>Propreté de grade clinique</h4><p>La minutie et les standards de désinfection des milieux critiques, appliqués à chacun de vos espaces — résidentiel, locatif ou commercial.</p></div>
+            <div class="feature reveal"><div class="ico">🐇🌱</div><h4>Sain pour la planète</h4><p>Des produits québécois efficaces, véganes et biodégradables, sans danger pour vos fosses septiques.</p></div>
+            <div class="feature reveal"><div class="ico">🧸🐾</div><h4>Sécuritaire pour tous</h4><p>Sans résidu toxique : un environnement sain pour vos proches, vos animaux, vos employés et votre clientèle.</p></div>
+            <div class="feature reveal"><div class="ico">⏱️</div><h4>Service professionnel</h4><p>Ponctualité, discrétion et résultats constants, visite après visite.</p></div>
+            <div class="feature reveal"><div class="ico">🏠🏢</div><h4>Services sur mesure</h4><p>Que ce soit pour votre résidence, votre location ou votre commerce, j'adapte mon expertise à vos besoins spécifiques.</p></div>
+            <div class="feature reveal"><div class="ico">🚨</div><h4>Disponible 24/7 pour les urgences locatives</h4><p>Un imprévu&nbsp;? Je reçois vos urgences en tout temps et je m'organise pour intervenir rapidement et remettre votre propriété en parfait état.</p></div>
+            <div class="feature reveal"><div class="ico">💼</div><h4>Entreprise enregistrée & assurée</h4><p>Confiez-moi vos espaces en toute confiance. Mon entreprise est en règle, avec une assurance responsabilité de 1&nbsp;M$ pour protéger vos biens.</p></div>
+            <div class="feature reveal"><div class="ico">🧾</div><h4>Facturation en règle</h4><p>Pour vos crédits d'impôt, votre comptabilité et vos déductions fiscales.</p></div>
+            <div class="feature reveal"><div class="ico">🤝🏼</div><h4>Estimation gratuite</h4><p>Obtenez une estimation sans frais et sans engagement pour planifier votre entretien.</p></div>
+        </div>
+    </section>
+
+    <!-- Realisations -->
+    <section id="realisations">
+        <div class="section-head reveal">
+            <span class="eyebrow">Mes réalisations</span>
+            <h2>Un aperçu de <span class="grad-text">mon travail</span></h2>
+            <p>Des résultats qui parlent d'eux-mêmes.</p>
+        </div>
+        <div class="carousel reveal">
+            <button class="cbtn prev" aria-label="Précédent" onclick="scrollCarousel('photos', -1)">&#8249;</button>
+            <div class="track" id="photos">
+                <img src="images/IMG_0191.jpeg" alt="Salle de bain nettoyée" class="pslide">
+                <img src="images/IMG_0192.jpeg" alt="Gros plan bain" class="pslide">
+                <img src="images/IMG_0201.jpeg" alt="Toilette nettoyée" class="pslide">
+                <img src="images/lavabo.jpg" alt="Lavabo nettoyé" class="pslide">
+                <img src="images/cuisine.jpeg" alt="Cuisine nettoyée" class="pslide">
+                <img src="images/fenetre-lit.jpg" alt="Fenêtre et chambre" class="pslide">
+                <img src="images/lit.jpeg" alt="Lit fait" class="pslide">
+            </div>
+            <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('photos', 1)">&#8250;</button>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="alt" id="temoignages">
+        <div class="section-head reveal">
+            <span class="eyebrow">Témoignages</span>
+            <h2>Votre satisfaction, <span class="grad-text">ma plus belle récompense</span></h2>
+        </div>
+        <div class="carousel reveal">
+            <button class="cbtn prev" aria-label="Précédent" onclick="scrollCarousel('avis', -1)">&#8249;</button>
+            <div class="track" id="avis">
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Katherine</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Catherine est une personne attentionnée aux détails, efficace et surtout de confiance ! Je vous la recommande.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Loryanne</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                    <p class="rtext">Personne minutieuse, ne tourne pas les coins ronds ! Elle s'applique dans son travail. Maison très propre même avec nos animaux !</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Claudel</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span></div>
+                    <div class="rstars">★★★★★</div>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Témoignage<br>d'une cliente</span><span>💬</span></div>
+                    <p class="rtext">Merci beaucoup Catherine pour votre travail, vous êtes super ! Vous êtes très attentive aux détails et j'aime ça.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Julien</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <p class="rtext">Service impeccable ! Catherine est tellement adorable. Je recommande !!</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Rosalie</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <p class="rtext">Catherine est tellement minutieuse et attentionnée envers ses clients ce qui fait d'elle la meilleure dans son domaine. Je recommande à tout le monde.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Annie</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <p class="rtext">Catherine travail très bien elle est minutieuse et attentionné et à l'écoute des besoins.</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Marie Lyne</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <p class="rtext">Quand on parle d'une « perle », et bien Catherine en est une vraie ! Quelle personne exceptionnelle ! Grande dévotion à son travail et à faire en sorte que tout le monde soit satisfait/content/heureux !</p>
+                </div>
+                <div class="rcard">
+                    <div class="rhead"><span class="rname">Natacha</span><span><svg viewBox="0 0 24 24" width="22" height="22" aria-label="Facebook"><path fill="#1877F2" d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38C19.61 22.95 24 17.99 24 12z"/></svg></span></div>
+                    <p class="rtext">Catherine est une personne très minutieuse et très attentionné.</p>
+                </div>
+            </div>
+            <button class="cbtn next" aria-label="Suivant" onclick="scrollCarousel('avis', 1)">&#8250;</button>
+        </div>
+        <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+            <p style="color:var(--muted); margin-bottom:1rem;">Vous avez aimé mon travail&nbsp;? N'hésitez pas à partager votre expérience&nbsp;!</p>
+            <a href="https://www.google.com/search?q=Entretien+m%C3%A9nager+Vert+%26+Net&kgmid=/g/11nbzjp8j8" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem;">Laisser un avis Google</a>
+        </div>
+    </section>
+
+    <!-- Regions -->
+    <section class="regions" id="regions">
+        <div class="section-head reveal" style="margin-bottom:1rem;">
+            <span class="eyebrow" style="background:rgba(255,255,255,0.15); color:#fff;">📍 Laurentides & Lanaudière</span>
+            <h2>Secteurs desservis</h2>
+        </div>
+        <div class="region-chips reveal">
+            <span class="chip">Saint-Hippolyte</span>
+            <span class="chip">Saint-Calixte</span>
+            <span class="chip">Chertsey</span>
+            <span class="chip">Sainte-Julienne</span>
+            <span class="chip">Saint-Esprit</span>
+            <span class="chip">Saint-Lin-Laurentides</span>
+            <span class="chip">Sainte-Sophie</span>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <span class="eyebrow">Contactez-moi</span>
+                <h2>Demandez votre estimation gratuite</h2>
+                <p>N'hésitez pas à me contacter pour obtenir une estimation sans frais. Il me fera plaisir de répondre à toutes vos questions&nbsp;!</p>
+                <div class="contact-item">
+                    <div class="contact-icon">&#128222;</div>
+                    <div class="contact-item-text">
+                        <small>Téléphone</small>
+                        <a href="tel:4508218141">(450) 821-8141</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">&#9993;</div>
+                    <div class="contact-item-text">
+                        <small>Courriel</small>
+                        <a href="mailto:entretienmenagervertetnet@gmail.com">entretienmenagervertetnet@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="#40916c"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                    <div class="contact-item-text">
+                        <small>Facebook</small>
+                        <a href="https://www.facebook.com/entretienvertetnet" target="_blank" rel="noopener">Entretien ménager Vert & Net</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <h3>Estimation gratuite</h3>
+                <form id="contactForm" action="https://formspree.io/f/xykblvqd" method="POST">
+                    <input type="hidden" name="_subject" value="Nouvelle demande d'estimation - Vert & Net">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Courriel</label>
+                        <input type="email" id="email" name="email" required placeholder="votre@courriel.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(450) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Type de service</label>
+                        <select id="service" name="service">
+                            <option value="">Sélectionnez un service</option>
+                            <option value="Entretien régulier">Entretien régulier</option>
+                            <option value="Grand ménage">Grand ménage</option>
+                            <option value="Entretien locatif & Airbnb">Entretien locatif & Airbnb</option>
+                            <option value="Entretien commercial & bureaux">Entretien commercial & bureaux</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Décrivez vos besoins..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; background:linear-gradient(120deg, var(--green-dark), var(--green-light)); border:none; padding:1rem;">Envoyer la demande</button>
+                    <p id="formStatus" style="text-align:center; margin-top:1rem; font-weight:500; display:none;"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="fbrand"><img src="images/IMG_0283.jpeg" alt="Logo"> Entretien ménager Vert & Net</div>
+        <p class="fslogan">« Faire briller sans polluer »</p>
+        <div class="fsoc"><a href="https://www.facebook.com/entretienvertetnet" target="_blank" rel="noopener">Facebook</a></div>
+        <small>© 2026 Entretien ménager Vert & Net · Laurentides & Lanaudière</small>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Carousel
+        const carouselIndex = {};
+        function scrollCarousel(id, dir) {
+            const track = document.getElementById(id);
+            if (!track) return;
+            const items = Array.from(track.children);
+            if (!items.length) return;
+            let target = (carouselIndex[id] || 0) + dir;
+            if (target < 0) target = items.length - 1;
+            if (target > items.length - 1) target = 0;
+            carouselIndex[id] = target;
+            const it = items[target];
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            const left = it.offsetLeft - (track.clientWidth - it.offsetWidth) / 2;
+            track.scrollTo({ left: Math.max(0, Math.min(maxScroll, left)), behavior: 'smooth' });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')));
+
+        // Nav shadow on scroll
+        const navEl = document.getElementById('nav');
+        window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+        // Avatars initiales sur les avis
+        document.querySelectorAll('#avis .rhead').forEach(h => {
+            const name = h.querySelector('.rname');
+            if (!name) return;
+            const av = document.createElement('span');
+            av.className = 'ravatar';
+            av.setAttribute('aria-hidden', 'true');
+            av.textContent = name.textContent.trim().charAt(0).toUpperCase();
+            h.prepend(av);
+        });
+
+        // Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this, status = document.getElementById('formStatus');
+            const btn = form.querySelector('button[type="submit"]');
+            btn.textContent = 'Envoi en cours...'; btn.disabled = true;
+            fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+                .then(r => {
+                    if (r.ok) { status.textContent = 'Merci! Votre demande a été envoyée.'; status.style.color = '#2d6a4f'; form.reset(); }
+                    else { status.textContent = 'Une erreur est survenue. Veuillez me téléphoner au (450) 821-8141.'; status.style.color = '#d32f2f'; }
+                    status.style.display = 'block'; btn.textContent = 'Envoyer la demande'; btn.disabled = false;
+                })
+                .catch(() => { status.textContent = 'Une erreur est survenue. Veuillez me téléphoner au (450) 821-8141.'; status.style.color = '#d32f2f'; status.style.display = 'block'; btn.textContent = 'Envoyer la demande'; btn.disabled = false; });
+        });
+    </script>
+
+    <!-- Bouton flottant Messenger (mobile) -->
+    <a href="https://m.me/entretienvertetnet" target="_blank" rel="noopener" class="floating-call" aria-label="Écrire sur Messenger" style="background:#0084FF; box-shadow:0 8px 24px rgba(0,132,255,0.5);">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.14 2 11.25c0 2.88 1.41 5.45 3.62 7.13V22l3.31-1.82c.88.24 1.82.38 2.79.38 5.5 0 10-4.14 10-9.25S17.5 2 12 2zm1.03 12.18l-2.55-2.72-4.97 2.72 5.47-5.81 2.61 2.72 4.91-2.72-5.47 5.81z"/></svg>
+        Messenger
+    </a>
+</body>
+</html>
