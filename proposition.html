@@ -40,12 +40,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --green-darkest: #1b4332;
-            --green-dark: #2d6a4f;
-            --green-mid: #40916c;
-            --green-bright: #52b788;
-            --green-light: #95d5b2;
-            --green-pale: #d8f3dc;
+            --green-darkest: #12372f;
+            --green-dark: #1f5144;
+            --green-mid: #35795b;
+            --green-bright: #479c74;
+            --green-light: #92cfae;
+            --green-pale: #ddf0e4;
             --ink: #14211c;
             --muted: #5f6f68;
             --bg: #ffffff;
@@ -176,9 +176,7 @@
             gap: 4rem;
             align-items: center;
             position: relative;
-            background:
-                radial-gradient(900px 420px at 88% -12%, rgba(82,183,136,0.14), transparent 60%),
-                radial-gradient(700px 420px at -8% 34%, rgba(149,213,178,0.16), transparent 55%);
+            background: var(--bg);
         }
         .hero-text { position: relative; z-index: 2; }
         .hero-text h1 {
@@ -232,11 +230,13 @@
         }
         .svc:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); border-color: var(--green-light); }
         .svc-ico {
-            width: 60px; height: 60px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--green-pale), var(--green-light));
+            width: 62px; height: 62px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid var(--line);
+            box-shadow: 0 12px 28px -20px rgba(18, 55, 47, 0.5);
             display: grid; place-items: center;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin: 0 auto 1.2rem;
             transition: transform 0.3s;
         }
@@ -280,7 +280,7 @@
         .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; max-width: 1100px; margin: 0 auto; }
         .feature { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.9rem 1.6rem; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; text-align: center; }
         .feature:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); border-color: var(--green-light); }
-        .feature .ico { width: 54px; height: 54px; border-radius: 16px; background: var(--green-pale); display: grid; place-items: center; font-size: 1.3rem; margin: 0 auto 1rem; transition: transform 0.3s; }
+        .feature .ico { width: 56px; height: 56px; border-radius: 50%; background: var(--green-pale); display: grid; place-items: center; font-size: 1.3rem; margin: 0 auto 1rem; transition: transform 0.3s; }
         .feature:hover .ico { transform: translateY(-4px) scale(1.05); }
         .feature h4 { font-size: 1.05rem; margin-bottom: 0.45rem; }
         .feature p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
@@ -356,14 +356,13 @@
 
         /* Regions */
         .regions {
-            background: linear-gradient(135deg, var(--green-darkest) 15%, var(--green-dark));
+            background: linear-gradient(rgba(18,55,47,0.72), rgba(18,55,47,0.8)), url('images/fenetre-lit.jpg') center 44% / cover;
             color: #fff; text-align: center;
             margin: 0 4%; border-radius: 36px;
-            padding: 5rem 6%;
+            padding: 6rem 6%;
             overflow: hidden;
         }
-        .regions::before { content: ''; position: absolute; top: -140px; right: -90px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(82,183,136,0.35), transparent 70%); }
-        .regions::after { content: ''; position: absolute; bottom: -160px; left: -100px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(149,213,178,0.18), transparent 70%); }
+        .regions::after { content: ''; position: absolute; inset: 18px; border: 1px solid rgba(255,255,255,0.3); border-radius: 24px; pointer-events: none; }
         .regions h2 { color: #fff; }
         .regions .section-head, .regions .region-chips { position: relative; z-index: 1; }
         .region-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; max-width: 760px; margin: 2rem auto 0; }
@@ -378,7 +377,8 @@
         .contact-info > p { color: var(--muted); font-size: 1.02rem; line-height: 1.7; margin: 0; }
         .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem; background: #fff; border: 1px solid var(--line); border-radius: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
         .contact-item:hover { border-color: var(--green-light); box-shadow: var(--shadow-sm); }
-        .contact-icon { width: 48px; height: 48px; background: var(--green-pale); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .contact-icon { width: 48px; height: 48px; background: #fff; border: 1px solid var(--line); border-radius: 50%; box-shadow: 0 10px 24px -18px rgba(18, 55, 47, 0.5); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .contact-item:last-child .contact-icon { border: 1.5px solid var(--green-mid); }
         .contact-item-text { display: flex; flex-direction: column; min-width: 0; }
         .contact-item-text small { color: var(--muted); font-size: 0.8rem; }
         .contact-item-text a { color: var(--ink); font-weight: 600; text-decoration: none; font-size: 1rem; overflow-wrap: anywhere; }
@@ -774,7 +774,7 @@
             <div class="feature reveal"><div class="ico">🚨</div><h4>Disponible 24/7 pour les urgences locatives</h4><p>Un imprévu&nbsp;? Je reçois vos urgences en tout temps et je m'organise pour intervenir rapidement et remettre votre propriété en parfait état.</p></div>
             <div class="feature reveal"><div class="ico">💼</div><h4>Entreprise enregistrée & assurée</h4><p>Confiez-moi vos espaces en toute confiance. Mon entreprise est en règle, avec une assurance responsabilité de 1&nbsp;M$ pour protéger vos biens.</p></div>
             <div class="feature reveal"><div class="ico">🧾</div><h4>Facturation en règle</h4><p>Pour vos crédits d'impôt, votre comptabilité et vos déductions fiscales.</p></div>
-            <div class="feature reveal"><div class="ico">🤝🏼</div><h4>Estimation gratuite</h4><p>Obtenez une estimation sans frais et sans engagement pour planifier votre entretien.</p></div>
+            <div class="feature reveal"><div class="ico">🫱🏼‍🫲🏾</div><h4>Estimation gratuite</h4><p>Obtenez une estimation sans frais et sans engagement pour planifier votre entretien.</p></div>
         </div>
     </section>
 
@@ -895,7 +895,7 @@
                     </div>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="#40916c"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
                     <div class="contact-item-text">
                         <small>Facebook</small>
                         <a href="https://www.facebook.com/entretienvertetnet" target="_blank" rel="noopener">Entretien ménager Vert & Net</a>
@@ -903,7 +903,7 @@
                 </div>
             </div>
             <div class="contact-form reveal">
-                <h3>Estimation gratuite</h3>
+                <h3>Parlez-moi de vos besoins</h3>
                 <form id="contactForm" action="https://formspree.io/f/xykblvqd" method="POST">
                     <input type="hidden" name="_subject" value="Nouvelle demande d'estimation - Vert & Net">
                     <div class="form-group">
