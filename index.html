@@ -325,7 +325,7 @@
 
         /* Carousel */
         .carousel { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 3.4rem; }
-        .track { display: flex; align-items: center; gap: 1.3rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0.3rem 1rem; scrollbar-width: none; }
+        .track { display: flex; align-items: flex-start; gap: 1.3rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0.3rem 1rem; scrollbar-width: none; }
         .track::-webkit-scrollbar { display: none; }
         .track > * { flex: 0 0 auto; scroll-snap-align: center; }
         .cbtn {
@@ -342,7 +342,7 @@
         .cbtn.next { right: 0; }
 
         .rcard {
-            width: 320px; min-height: 250px;
+            width: 320px; min-height: 250px; align-self: stretch;
             background: #fff; border-radius: 20px;
             padding: 1.7rem 1.6rem;
             display: flex; flex-direction: column;
@@ -824,7 +824,7 @@
 
     <!-- Realisations -->
     <section id="realisations">
-        <div style="text-align:center; margin-bottom:2.6rem;" class="reveal">
+        <div style="text-align:center; margin-bottom:1.2rem;" class="reveal">
             <span class="eyebrow">🏠 Entretien résidentiel</span>
         </div>
         <div class="carousel reveal">
@@ -844,7 +844,7 @@
 
     <!-- Chalet Le Raton -->
     <section id="chalet" class="alt">
-        <div style="text-align:center; margin-bottom:2.6rem;" class="reveal">
+        <div style="text-align:center; margin-bottom:1.2rem;" class="reveal">
             <span class="eyebrow">🔑 Entretien locatif & Airbnb</span>
         </div>
         <div class="carousel reveal">
