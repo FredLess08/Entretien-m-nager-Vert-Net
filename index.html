@@ -325,7 +325,7 @@
 
         /* Carousel */
         .carousel { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 3.4rem; }
-        .track { display: flex; gap: 1.3rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0.3rem 1rem; scrollbar-width: none; }
+        .track { display: flex; align-items: center; gap: 1.3rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0.3rem 1rem; scrollbar-width: none; }
         .track::-webkit-scrollbar { display: none; }
         .track > * { flex: 0 0 auto; scroll-snap-align: center; }
         .cbtn {
@@ -364,7 +364,7 @@
         .rtext { color: var(--muted); font-size: 0.93rem; line-height: 1.6; margin-top: 0.6rem; }
         .rstars + .rtext { margin-top: 0; }
 
-        .pslide { height: 320px; width: auto; max-width: 100%; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform 0.35s; }
+        .pslide { width: 300px; height: auto; max-width: 100%; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform 0.35s; }
         .pslide:hover { transform: scale(1.02); }
         .cdots { display: flex; justify-content: center; gap: 8px; margin-top: 1.4rem; }
         .cdots button { width: 8px; height: 8px; padding: 0; border-radius: 8px; border: none; background: var(--green-light); opacity: 0.5; cursor: pointer; transition: width 0.25s, opacity 0.25s, background 0.25s; }
@@ -482,7 +482,7 @@
             .about-story { padding-left: 1.2rem; }
             .carousel { padding: 0 2.4rem; }
             .rcard { width: 275px; }
-            .pslide { height: 370px; }
+            .pslide { width: 80vw; max-width: 330px; }
         }
     </style>
 </head>
