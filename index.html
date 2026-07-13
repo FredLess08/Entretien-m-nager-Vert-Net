@@ -364,9 +364,8 @@
         .rtext { color: var(--muted); font-size: 0.93rem; line-height: 1.6; margin-top: 0.6rem; }
         .rstars + .rtext { margin-top: 0; }
 
-        .pslide { width: 300px; max-width: 100%; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform 0.35s; }
-        #photos .pslide { aspect-ratio: 3 / 4; }                        /* Réalisations : tuiles portrait uniformes */
-        #chalet-photos .pslide { width: 320px; aspect-ratio: 4 / 5; }   /* Chalet : tuiles 4:5, tolère le mélange portraits + paysages */
+        /* Hauteur fixe = photos alignées (pas d'escalier) ; largeur naturelle = aucune coupe, tous les détails */
+        .pslide { height: 360px; width: auto; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform 0.35s; }
         .pslide:hover { transform: scale(1.02); }
         .cdots { display: flex; justify-content: center; gap: 8px; margin-top: 1.4rem; }
         .cdots button { width: 8px; height: 8px; padding: 0; border-radius: 8px; border: none; background: var(--green-light); opacity: 0.5; cursor: pointer; transition: width 0.25s, opacity 0.25s, background 0.25s; }
@@ -484,8 +483,7 @@
             .about-story { padding-left: 1.2rem; }
             .carousel { padding: 0 2.4rem; }
             .rcard { width: 275px; }
-            .pslide { width: 80vw; max-width: 330px; }
-            #chalet-photos .pslide { width: 80vw; max-width: 340px; }
+            .pslide { height: 280px; }
         }
     </style>
 </head>
