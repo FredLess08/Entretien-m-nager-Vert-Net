@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <rect width="100" height="100" fill="#12372f"/>
+  <g transform="translate(50,50) scale(0.92) translate(-50,-50)">
+
+    <!-- FEUILLE + TIGE : une seule forme continue (aucune jointure visible).
+         La tige repart dans l'axe de la feuille (45 deg) et s'effile jusqu'a la pointe. -->
+    <path d="M18.5 84.5
+             C21.5 80.5, 24.5 76.8, 28.5 72.5
+             C28 58, 45 26, 76 23
+             C77 51, 57 73.5, 32.2 74.3
+             C28.6 78.3, 24 81.8, 19.6 85.9
+             C18.3 87.1, 17.2 85.9, 18.5 84.5 Z"
+          fill="#92cfae"/>
+
+    <!-- Nervure centrale -->
+    <path d="M32 71 C44 60, 56 45, 68 32" stroke="#12372f" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+
+    <!-- Nervures laterales : par PAIRES, toutes inclinees vers la pointe -> chevrons (plume),
+         jamais alignees entre elles, donc aucun effet de croix. -->
+    <g stroke="#12372f" stroke-width="2.1" stroke-linecap="round" fill="none">
+      <path d="M41.0 62.1 L39.8 49.1"/>
+      <path d="M41.0 62.1 L54.0 63.3"/>
+
+      <path d="M48.2 54.3 L47.0 41.3"/>
+      <path d="M48.2 54.3 L61.2 55.5"/>
+
+      <path d="M55.4 46.1 L54.5 36.1"/>
+      <path d="M55.4 46.1 L67.4 47.2"/>
+    </g>
+
+    <!-- Etincelles blanches -->
+    <path d="M28 15 Q29.3 24.7 39 26 Q29.3 27.3 28 37 Q26.7 27.3 17 26 Q26.7 24.7 28 15 Z" fill="#ffffff"/>
+    <path d="M78 68 Q78.9 75.1 86 76 Q78.9 76.9 78 84 Q77.1 76.9 70 76 Q77.1 75.1 78 68 Z" fill="#ffffff"/>
+
+  </g>
+</svg>
